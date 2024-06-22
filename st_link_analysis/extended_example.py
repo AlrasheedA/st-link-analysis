@@ -1,6 +1,5 @@
 import json
 import streamlit as st
-import pandas as pd
 from st_link_analysis import st_link_analysis, NodeStyle, EdgeStyle
 from st_link_analysis.component.icons import SUPPORTED_ICONS
 

@@ -9,7 +9,7 @@ This project provides a Streamlit custom component for visualizing and interacti
 ## Demo
 ![extended-example](demo.gif)
 
-A deployed with Render's free tier can be [accessed here](https://st-link-analysis-demo.onrender.com/). 
+A demo deployed with Render's free tier can be [accessed here](https://st-link-analysis-demo.onrender.com/).
 
 ## Features
 
