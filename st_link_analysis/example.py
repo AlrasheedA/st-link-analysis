@@ -3,6 +3,7 @@ from st_link_analysis import st_link_analysis, NodeStyle, EdgeStyle
 
 st.set_page_config(layout="wide")
 
+# Sample Data
 elements = {
     "nodes": [
         {"data": {"id": 1, "label": "PERSON", "name": "Streamlit"}},
@@ -20,9 +21,10 @@ elements = {
     ],
 }
 
+# Style node & edge groups
 node_styles = [
     NodeStyle("PERSON", "#FF7F3E", "name", "person"),
-    NodeStyle("POST", "#2A629A", icon="description"),
+    NodeStyle("POST", "#2A629A", "content", "description"),
 ]
 
 edge_styles = [
@@ -31,5 +33,6 @@ edge_styles = [
     EdgeStyle("QUOTES", labeled=True, directed=True),
 ]
 
+# Render the component
 st.markdown("### st-link-analysis: Example")
 st_link_analysis(elements, "cose", node_styles, edge_styles)
