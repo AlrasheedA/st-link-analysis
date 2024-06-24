@@ -2,7 +2,7 @@ import streamlit as st
 
 to_remove = []
 
-with open("LICENSE") as f:
+with open("./../LICENSE") as f:
     license = f.read()
 
 for line in to_remove:

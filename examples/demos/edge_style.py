@@ -2,7 +2,7 @@ import json
 import streamlit as st
 from st_link_analysis import st_link_analysis, NodeStyle, EdgeStyle
 
-with open("./examples/sample_data.json", "r") as f:
+with open("./sample_data.json", "r") as f:
     elements = json.load(f)
 
 PERSON_ATTRS = list(elements["edges"][0]["data"].keys()) + [None]

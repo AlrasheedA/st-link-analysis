@@ -5,7 +5,7 @@ from st_link_analysis.component.layouts import LAYOUTS
 
 LAYOUT_NAMES = list(LAYOUTS.keys())
 
-with open("./examples/sample_data.json", "r") as f:
+with open("./sample_data.json", "r") as f:
     elements = json.load(f)
 
 st.markdown("# Layout Algorithms")

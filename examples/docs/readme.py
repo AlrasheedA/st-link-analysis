@@ -5,7 +5,7 @@ to_remove = [
     "![extended-example](demo.gif)",
 ]
 
-with open("README.md") as f:
+with open("./../README.md") as f:
     readme = f.read()
 
 for line in to_remove:
