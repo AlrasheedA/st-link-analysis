@@ -1,0 +1,22 @@
+name: 'Setup Node Environment'
+description: 'Setup ndoe environment and install dependencies'
+
+inputs:
+  node-version:
+    description: 'Node version to use'
+    required: true
+    default: '20.x'
+
+runs:
+  using: composite
+  steps:
+    - name: 'Setup node'
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+    - name: 'Install Dependencies and Build'
+      working-dir: ./st_link_analysis/frontend/
+      shell: bash
+      run: |
+        npm ci
+        npm run build
