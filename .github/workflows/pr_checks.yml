@@ -3,13 +3,43 @@ name: Pull Request Checks
 on: pull_request
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v4
+      - name: 'Setup Python Env'
+        uses: ./.github/actions/setup-python
+        with:
+            python-version: '3.x'
+      - name: 'Setup Node Env'
+        uses: ./.github/actions/setup-node
+        with:
+            node-version: '20.x'
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/actions/setup-backend
+      - uses: ./.github/actions/setup-python
         with:
-          python-version: '3.x'
-      - name: Lint with Ruff
+            python-version: '3.x'
+      - name: 'Ruff Check'
         run: |
-          ruff --output-format=github
+          ruff check --output-format=github
+  
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        PY_VERSION: ["3.9", "3.10","3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-python
+        with:
+          python-version: ${{ matrix.PY_VERSION }}
+      - uses: ./.github/actions/setup-node
+        with:
+          node-version: '20.x'
+      - run: |
+          pytest
