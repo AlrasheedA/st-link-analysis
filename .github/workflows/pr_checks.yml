@@ -35,7 +35,7 @@ jobs:
         PY_VERSION: ["3.9", "3.10","3.11", "3.12"]
     steps:
       - uses: actions/checkout@v4
-      - uses: ./github/actions/setup-python
+      - uses: ./.github/actions/setup-python
         with:
           python-version: '3.x'
       - uses: ./github/actions/setup-node
