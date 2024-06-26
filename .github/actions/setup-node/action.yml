@@ -15,7 +15,7 @@ runs:
       with:
         node-version: ${{ inputs.node-version }}
     - name: 'Install Dependencies and Build'
-      working-dir: ./st_link_analysis/frontend/
+      working-directory: ./st_link_analysis/frontend/
       shell: bash
       run: |
         npm ci
