@@ -1,6 +1,6 @@
 import os
 import streamlit.components.v1 as components
-from typing import Optional
+from typing import Optional, Union
 
 from st_link_analysis.component.layouts import LAYOUTS
 from st_link_analysis.component.styles import NodeStyle, EdgeStyle
@@ -23,7 +23,7 @@ else:
 
 def st_link_analysis(
     elements: dict,
-    layout: str | dict = "cose",
+    layout: Union[str, dict] = "cose",
     node_styles: list[NodeStyle] = [],
     edge_styles: list[EdgeStyle] = [],
     height: int = 500,
