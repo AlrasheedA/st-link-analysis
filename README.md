@@ -80,16 +80,60 @@ st_link_analysis(elements, "cose", node_styles, edge_styles)
 
 ## API Reference
 
-| Element                 | Description                                           |
-|-------------------------|-------------------------------------------------------|
-| `NodeStyle`             | Defines styles for nodes, including labels, colors, captions, and icons. Refer to docstring. |
-| `EdgeStyle`             | Defines styles for edges, including curve styles, labels, colors, and directionality. Refer to docstring. |
-| `st_link_analysis`      | Main component for creating and displaying the graph, including layout and height settings. Refer to docstring. |
+| Element            | Description                                                                                                     |
+| ------------------ | --------------------------------------------------------------------------------------------------------------- |
+| `NodeStyle`        | Defines styles for nodes, including labels, colors, captions, and icons. Refer to docstring.                    |
+| `EdgeStyle`        | Defines styles for edges, including curve styles, labels, colors, and directionality. Refer to docstring.       |
+| `st_link_analysis` | Main component for creating and displaying the graph, including layout and height settings. Refer to docstring. |
 
 
 ## Development
 
-WIP
+- Ensure you have Python 3.9+, Node.js, and npm installed.
+- Clone this repository
+- Navigate to root directory
+
+### Python Setup
+
+Create and activate a virtual environment, then install the package in editable mode:
+
+```bash
+python3 -m venv .venv 
+source .venv/bin/activate # On Windows use `.venv\Scripts\activate`
+pip install -e . 
+```
+
+### Node Setup
+
+Navigate to the frontend directory and install the necessary npm packages:
+
+```bash
+cd st_link_analysis/frontend
+npm install 
+```
+### Running the App
+
+Change `RELEASE` flag in `st_link_analysis/component/component.py` to `False`. 
+
+In one terminal start the frontend dev server
+```bash
+cd st_link_analysis/frontend
+npm run start 
+```
+In another terminal run the streamlit server 
+```bash
+cd examples
+streamlit run app.py
+```
+
+### Testing
+
+Install the testing requirements and run linting and tests:
+```bash
+pip install tests/requirements.txt
+ruff check
+pytest
+```
 
 ## Contributing
 
@@ -104,6 +148,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - [Cytoscape.js](https://js.cytoscape.org/)
 - [Streamlit](https://www.streamlit.io/)
 - [Material Icons](https://fonts.google.com/icons)
-
-
-
