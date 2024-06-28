@@ -1,5 +1,5 @@
 import "./style.css";
-import { Streamlit, RenderData } from "streamlit-component-lib";
+import { Streamlit } from "streamlit-component-lib";
 import State from "./utils/state.js";
 import { debounce } from "./utils/helpers.js";
 import initCyto, { graph } from "./components/graph.js";
