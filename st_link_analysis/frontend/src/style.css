@@ -68,7 +68,7 @@ body[data-theme="dark"] .container {
     clip-path: inset(0px -3rem 0px 0px);
 }
 
-.infoBar[data-selected='element'] {
+.infoBar[data-selected="element"] {
     width: 20vw;
     opacity: 1;
 }

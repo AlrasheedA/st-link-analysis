@@ -16,7 +16,8 @@ jobs:
         uses: ./.github/actions/setup-node
         with:
             node-version: '20.x'
-  lint:
+
+  lint_py:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,9 +27,25 @@ jobs:
       - name: 'Ruff Check'
         run: |
           ruff check --output-format=github
+
+  lint_js:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node
+        with:
+          node-version: '20.x'
+      - name: 'Check JS Formatting'
+        working-directory: ./st_link_analysis/frontend/
+        run: |
+          npm run format
+      - name: 'Check JS Linting'
+        working-directory: ./st_link_analysis/frontend/
+        run: |
+          npm run lint
   
   test:
-    needs: lint
+    needs: [lint_py, lint_js]
     runs-on: ubuntu-latest
     strategy:
       matrix:
