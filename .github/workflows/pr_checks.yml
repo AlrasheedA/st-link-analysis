@@ -35,10 +35,13 @@ jobs:
       - uses: ./.github/actions/setup-node
         with:
           node-version: '20.x'
-      - name: 'Check JS Linting and Formatting'
+      - name: 'Check JS Formatting'
         working-directory: ./st_link_analysis/frontend/
         run: |
           npm run format
+      - name: 'Check JS Linting'
+        working-directory: ./st_link_analysis/frontend/
+        run: |
           npm run lint
   
   test:
