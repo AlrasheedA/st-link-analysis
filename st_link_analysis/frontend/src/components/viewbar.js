@@ -12,11 +12,10 @@ const ZOOM_FACTOR = 0.8;
 // Event Handlers
 function _handlePlusClick() {
     const cy = getCyInstance();
-    const zoom = cy.zoom() * (1 / ZOOM_FACTOR);
     const ex = cy.extent();
     cy.animate({
         zoom: {
-            level: zoom,
+            level: cy.zoom() * (1 / ZOOM_FACTOR),
             position: { x: ex.x1 + 0.5 * ex.w, y: ex.y1 + 0.5 * ex.h },
         },
         duration: ZOOM_DEBOUNCE,
@@ -25,11 +24,10 @@ function _handlePlusClick() {
 
 function _handleMinusClick() {
     const cy = getCyInstance();
-    const zoom = cy.zoom() * ZOOM_FACTOR;
     const ex = cy.extent();
     cy.animate({
         zoom: {
-            level: zoom,
+            level: cy.zoom() * ZOOM_FACTOR,
             position: { x: ex.x1 + 0.5 * ex.w, y: ex.y1 + 0.5 * ex.h },
         },
         duration: ZOOM_DEBOUNCE,
