@@ -4,6 +4,7 @@ import State from "./utils/state.js";
 import { debounce } from "./utils/helpers.js";
 import initCyto, { graph } from "./components/graph.js";
 import initToolbar from "./components/toolbar.js";
+import initViewbar from "./components/viewbar.js";
 import updateInfobar from "./components/infobar.js";
 
 // Constants / Configurations
@@ -17,8 +18,9 @@ State.subscribe("selection", graph.updateHighlight);
 State.subscribe("layout", graph.updateLayout);
 State.subscribe("style", graph.updateStyle);
 
-// Initialize toolbar
+// Initialize components
 initToolbar();
+initViewbar();
 
 // Initialize variables for onRender
 let cy;
