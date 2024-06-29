@@ -40,7 +40,7 @@ function _handleExportClick() {
 }
 
 // Toolbar initialization
-function initToolBar() {
+function initToolbar() {
     const fs = document.getElementById(FS_ID);
     const refresh = document.getElementById(REFRESH_ID);
     const json_export = document.getElementById(EXPORT_ID);
@@ -56,4 +56,4 @@ function initToolBar() {
     );
 }
 
-export default initToolBar;
+export default initToolbar;

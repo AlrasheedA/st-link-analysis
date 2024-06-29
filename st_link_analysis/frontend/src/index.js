@@ -3,8 +3,8 @@ import { Streamlit } from "streamlit-component-lib";
 import State from "./utils/state.js";
 import { debounce } from "./utils/helpers.js";
 import initCyto, { graph } from "./components/graph.js";
-import initToolBar from "./components/toolBar.js";
-import updateInfoBar from "./components/infoBar.js";
+import initToolbar from "./components/toolbar.js";
+import updateInfobar from "./components/infobar.js";
 
 // Constants / Configurations
 const CONTAINER_ID = "container";
@@ -12,13 +12,13 @@ const RENDER_DEBOUNCE = 100;
 const SETFRAME_DELAY = 150;
 
 // Subscribe to state changes
-State.subscribe("selection", updateInfoBar);
+State.subscribe("selection", updateInfobar);
 State.subscribe("selection", graph.updateHighlight);
 State.subscribe("layout", graph.updateLayout);
 State.subscribe("style", graph.updateStyle);
 
 // Initialize toolbar
-initToolBar();
+initToolbar();
 
 // Initialize variables for onRender
 let cy;

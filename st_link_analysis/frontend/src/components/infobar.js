@@ -5,13 +5,13 @@ const INFOBAR_ID = "infobar";
 const LABEL_ID = "infobarLabel";
 const PROPS_ID = "infobarProps";
 
-// InfoBar children updates
+// Infobar children updates
 function _updateLabel(color, label, icon) {
     const label_div = document.getElementById(LABEL_ID);
     label_div.firstChild.innerText = label;
     label_div.firstChild.style.borderColor = color;
     label_div.lastChild.style.backgroundColor = color;
-    if (icon && (icon!="none")) {
+    if (icon && icon != "none") {
         label_div.lastChild.style.backgroundImage = `url(${icon})`;
     } else {
         delete label_div.lastChild.style.backgroundImage;
@@ -31,9 +31,9 @@ function _updateProps(data) {
         .join("");
 }
 
-// InfoBar update
-function updateInfoBar() {
-    const infoBar = document.getElementById(INFOBAR_ID);
+// Infobar update
+function updateInfobar() {
+    const infobar = document.getElementById(INFOBAR_ID);
     const el = State.getState("selection").lastSelected;
     let color, data, label, selected, icon;
     if (el) {
@@ -49,9 +49,9 @@ function updateInfoBar() {
         selected = null;
         icon = null;
     }
-    infoBar.setAttribute("data-selected", selected);
+    infobar.setAttribute("data-selected", selected);
     _updateLabel(color, label, icon);
     _updateProps(data);
 }
 
-export default updateInfoBar;
+export default updateInfobar;
