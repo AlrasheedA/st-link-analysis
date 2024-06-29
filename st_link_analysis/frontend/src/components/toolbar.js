@@ -20,7 +20,7 @@ function __handleFsClick() {
 
 function _handleRefreshClick() {
     const cy = getCyInstance();
-    cy.layout(State.getState("layout")).run();
+    cy.layout({ ...State.getState("layout"), fit: false }).run();
 }
 
 function _handleExportClick() {
