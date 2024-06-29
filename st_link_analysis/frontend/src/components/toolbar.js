@@ -2,9 +2,9 @@ import State from "../utils/state";
 import { debounce, getCyInstance } from "../utils/helpers";
 
 // Constants / Configurations
-const FS_ID = "toolBar-fs";
-const REFRESH_ID = "toolBar-refresh";
-const EXPORT_ID = "toolBar-export";
+const FS_ID = "toolbarFullscreen";
+const REFRESH_ID = "toolbarRefresh";
+const EXPORT_ID = "toolbarExport";
 const FS_DEBOUNCE = 100;
 const REFRESH_DEBOUNCE = 200;
 const EXPORT_DEBOUNCE = 250;
@@ -40,7 +40,7 @@ function _handleExportClick() {
 }
 
 // Toolbar initialization
-function initToolBar() {
+function initToolbar() {
     const fs = document.getElementById(FS_ID);
     const refresh = document.getElementById(REFRESH_ID);
     const json_export = document.getElementById(EXPORT_ID);
@@ -56,4 +56,4 @@ function initToolBar() {
     );
 }
 
-export default initToolBar;
+export default initToolbar;

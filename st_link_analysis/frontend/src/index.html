@@ -6,33 +6,49 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
     <body data-theme="light">
+        <!-- Component Container -->
         <div id="container" class="container fh">
             <!-- Cytoscape Container -->
-            <div id="cy" class="column cy"></div>
+            <div id="cy" class="cy"></div>
 
             <!-- Information Bar -->
-            <div id="infoBar" , class="infoBar">
-                <div id="infoBar_label" class="label"></div>
-                <div id="infoBar_props" class="props"></div>
+            <div id="infobar" , class="infobar">
+                <div class="infobar__help">No selected elements</div>
+                <div id="infobarLabel" class="infobar__label">
+                    <div class="infobar__name"></div>
+                    <div class="infobar__icon"></div>
+                </div>
+                <div id="infobarProps" class="infobar__props"></div>
             </div>
 
             <!-- Toolbar -->
-            <div id="toolBar" class="toolBar">
+            <div id="toolbar" class="toolbar">
                 <div
-                    id="toolBar-refresh"
-                    class="toolbar-item i-refresh"
+                    id="toolbarRefresh"
+                    class="toolbar__item i-refresh"
                     title="Refresh Layout"
-                ></div>
+                >
+                    <!-- prettier-ignore -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="toolbar__icon" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                </div>
+                <hr class="toolbar__hr" />
                 <div
-                    id="toolBar-export"
-                    class="toolbar-item i-save"
+                    id="toolbarExport"
+                    class="toolbar__item i-save"
                     title="Download as JSON"
-                ></div>
+                >
+                    <!-- prettier-ignore -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="toolbar__icon" viewBox="0 0 24 24"><g><rect fill="none" height="24" width="24"/></g><g><path d="M5,20h14v-2H5V20z M19,9h-4V3H9v6H5l7,7L19,9z"/></g></svg>
+                </div>
+                <hr class="toolbar__hr" />
                 <div
-                    id="toolBar-fs"
-                    class="toolbar-item i-fs"
+                    id="toolbarFullscreen"
+                    class="toolbar__item i-fs"
                     title="Fullscreen"
-                ></div>
+                >
+                    <!-- prettier-ignore -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="toolbar__icon" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                </div>
             </div>
         </div>
     </body>
