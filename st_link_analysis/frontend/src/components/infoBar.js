@@ -11,10 +11,10 @@ function _updateLabel(color, label, icon) {
     label_div.firstChild.innerText = label;
     label_div.firstChild.style.borderColor = color;
     label_div.lastChild.style.backgroundColor = color;
-    if (icon) {
+    if (icon && (icon!="none")) {
         label_div.lastChild.style.backgroundImage = `url(${icon})`;
     } else {
-        label_div.lastChild.style.backgroundImage = null;
+        delete label_div.lastChild.style.backgroundImage;
     }
 }
 
