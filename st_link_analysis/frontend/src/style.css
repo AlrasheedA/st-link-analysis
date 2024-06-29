@@ -4,26 +4,33 @@
     weight: 125 900;
 }
 
-/* ------- Custom Properties ------- */
-body[data-theme="dark"] {
-    --canvas-color: rgb(15, 17, 22);
-    --bg-color: rgb(38, 39, 47);
-    --primary-color: white;
-    --secondary-color: rgb(179, 179, 179);
-    --shadow: rgba(0, 0, 11, 1) 0px 0px 25px -5px;
-}
-
+/* ---------------------------------------------------- */
+/* ---------------------- Main ------------------------ */
+/* ---------------------------------------------------- */
 body[data-theme="light"] {
-    --bg-color: rgb(255, 255, 255);
-    --canvas-color: rgb(250, 250, 252);
-    --primary-color: rgb(5, 5, 5);
-    --secondary-color: rgb(150, 150, 150);
-    --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --neutral-1: hsl(223, 0%, 100%);
+    --neutral-2: hsl(223, 0%, 99%);
+    --neutral-3: hsl(223, 23%, 95%);
+
+    --neutral-8: hsl(223, 0%, 47%);
+    --neutral-9: hsl(223, 19%, 7%);
+
+    --box-shadow: hsla(223, 19%, 7%, 0.15) 0px 0px 5px -0.5px;
 }
 
-/* ------- Layout ------- */
+body[data-theme="dark"] {
+    --neutral-1: hsl(223, 19%, 7%);
+    --neutral-2: hsl(223, 19%, 10%);
+    --neutral-3: hsl(223, 19%, 16%);
+
+    --neutral-8: hsl(223, 0%, 60%);
+    --neutral-9: hsl(223, 0%, 100%);
+
+    --box-shadow: hsla(0, 0%, 0%, 1) 0px 0px 5px -0.5px;
+}
+
 html {
-    font-size: clamp(6px, 3px + 1vw, 16px);
+    font-size: clamp(8px, 3px + 1vw, 14px);
 }
 
 body {
@@ -32,137 +39,164 @@ body {
 }
 
 .container {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    border: 0.1rem solid rgb(225, 225, 225);
+    box-sizing: border-box;
     position: relative;
+    background-color: var(--neutral-1);
+    border: var(--neutral-3) dashed;
 }
 
-body[data-theme="dark"] .container {
-    border-color: rgb(55, 55, 55);
-}
-
+/* ---------------------------------------------------- */
+/* --------------- Cyotscape Container ---------------- */
+/* ---------------------------------------------------- */
 .cy {
     z-index: 1;
-    height: inherit;
-    grid-column-start: span 12;
-    background-color: var(--canvas-color);
+    height: 100%;
+    box-sizing: border-box;
+    width: 100%;
 }
 
-/* ------- Components Styles ------- */
-/* Info Bar */
-.infoBar {
+/* ---------------------------------------------------- */
+/* -------------- Information Side Bar ---------------- */
+/* ---------------------------------------------------- */
+
+.infobar {
     z-index: 2;
+    box-sizing: border-box;
     position: absolute;
-    width: 2vw;
-    height: inherit;
-    background-color: var(--bg-color);
-    box-shadow: var(--shadow);
+    top: 0rem;
+    bottom: 0rem;
+    margin: 0.5rem;
+    width: 0rem;
+    transition-duration: 200ms;
+    /* content */
     display: flex;
     flex-direction: column;
-    transition-duration: 200ms;
-    overflow-wrap: break-word;
-    overflow-x: hidden;
+    padding: 1rem;
+    /* theme */
+    box-shadow: var(--box-shadow);
+    background-color: var(--neutral-2);
+}
+
+.infobar[data-selected="element"] {
+    width: 17.5rem;
+
+    & .infobar__props {
+        border: var(--neutral-3) solid;
+    }
+    & .infobar__help {
+        display: none;
+    }
+}
+
+.infobar__help {
     position: absolute;
-    opacity: 0.8;
-    clip-path: inset(0px -3rem 0px 0px);
+    bottom: calc(50% - 5rem);
+    left: 0rem;
+    height: auto;
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    white-space: nowrap;
 }
 
-.infoBar[data-selected="element"] {
-    width: 20vw;
-    opacity: 1;
-}
-
-.label {
-    text-align: center;
-    margin: 1rem 1rem 0rem 1rem;
-    font-size: 1rem;
-    font-weight: 600;
-    width: auto;
-    color: white;
-    background-color: var(--bg-color);
-    border-radius: 1rem;
-}
-
-.props {
-    margin: 1rem 1rem 0rem 1rem;
-    flex: 1;
-    overflow-y: auto;
-    scrollbar-width: thin;
-}
-
-.prop {
-    margin: 1rem 0rem 0rem 0rem;
-}
-
-.propKey {
-    margin: 0rem;
-    font-weight: 450;
-    color: var(--secondary-color);
-    line-height: 100%;
-}
-
-.propVal {
-    margin: 0rem;
-    font-weight: 450;
-    color: var(--primary-color);
-}
-
-/* Tool Bar */
-.toolBar {
-    z-index: 3;
-    position: absolute;
-    right: 0.5rem;
-    top: 0.5rem;
-    height: 2rem;
-    width: auto;
-    background-color: var(--bg-color);
-    border-radius: 5px;
-    box-shadow: var(--shadow);
-    transition: 200ms;
+.infobar__label {
     display: flex;
     flex-direction: row;
-    opacity: 0;
+    justify-content: center;
 }
 
-.container:hover .toolBar {
-    opacity: 1;
+.infobar__name {
+    text-align: center;
+    align-content: center;
+    border-radius: 0.5rem;
+    border: var(--neutral-2) solid;
+    margin: auto;
+    width: 75%;
+    height: 2rem;
+    /* theme */
+    color: var(--neutral-9);
+    background-color: var(--neutral-2);
+    font-weight: 600;
 }
 
-.toolbar-item {
+.infobar__icon {
     width: 2rem;
-    cursor: pointer;
+    height: 2rem;
+    border-radius: 1.3rem;
+    margin: auto 0.5rem;
+    /* theme */
+    color: var(--neutral-9);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 65%;
 }
 
-.toolbar-item:hover {
-    border-radius: 0.5rem;
-    background-color: rgb(245, 245, 250);
-}
-body[data-theme="dark"] .toolbar-item:hover {
-    background-color: rgb(23, 24, 32);
-}
-
-/* ------- Utility Classes ------- */
-.container:fullscreen .fh {
-    height: 100%;
+.infobar__props {
+    padding: 1rem;
+    margin-top: 1rem;
+    /* content */
+    display: flex;
+    flex-direction: column;
+    flex: 1px;
+    row-gap: 1rem;
+    overflow: auto;
 }
 
-/* ------- icons ------- */
-.i-fs {
-    background-image: url("./assets/fullscreen.svg");
+.infobar__key {
+    margin: 0;
+    line-height: 1.5rem;
+    color: var(--neutral-8);
 }
 
-.container:fullscreen .i-fs {
-    background-image: url("./assets/fullscreen_exit.svg");
+.infobar__val {
+    margin: 0;
+    line-height: 1.5rem;
+    color: var(--neutral-9);
+    font-weight: 600;
 }
 
-.i-save {
-    background-image: url("./assets/download.svg");
+/* ---------------------------------------------------- */
+/* --------------------- Toolbar ---------------------- */
+/* ---------------------------------------------------- */
+.toolbar {
+    z-index: 2;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    height: 2rem;
+    width: auto;
+    /* content */
+    display: flex;
+    /* theme */
+    box-shadow: var(--box-shadow);
+    background-color: var(--neutral-2);
 }
 
-.i-refresh {
-    background-image: url("./assets/refresh.svg");
+.toolbar__item {
+    width: 2rem;
+    height: 2rem;
+    /* content */
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    /* theme */
+    background-color: var(--neutral-2);
+    &:hover {
+        background-color: var(--neutral-3);
+    }
+    &:active {
+        background-color: var(--neutral-2);
+    }
+}
+
+.toolbar__hr {
+    margin: 0.25rem 0 0.25rem 0;
+    border: var(--neutral-8) solid 0.5px;
+}
+
+.toolbar__icon {
+    fill: var(--neutral-9);
+    height: 65%;
+    width: 65%;
+    margin: auto;
 }
