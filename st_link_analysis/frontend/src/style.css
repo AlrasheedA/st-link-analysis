@@ -161,8 +161,9 @@ body {
     z-index: 2;
     box-sizing: border-box;
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
+    top: 0rem;
+    right: 0rem;
+    margin: 0.5rem;
     height: 2rem;
     width: auto;
     /* content */
@@ -199,4 +200,51 @@ body {
     height: 65%;
     width: 65%;
     margin: auto;
+}
+
+/* ---------------------------------------------------- */
+/* --------------------- Viewbar ---------------------- */
+/* ---------------------------------------------------- */
+.viewbar {
+    z-index: 2;
+    position: absolute;
+    bottom: 0rem;
+    right: 0rem;
+    margin: 0.5rem;
+    width: 2rem;
+    /* content */
+    display: flex;
+    flex-direction: column;
+    /* theme */
+    background-color: var(--neutral-2);
+    box-shadow: var(--box-shadow);
+}
+
+.viewbar__item {
+    height: 2.5rem;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    &:hover {
+        background-color: var(--neutral-3);
+    }
+    &:active {
+        background-color: var(--neutral-2);
+    }
+}
+
+.viewbar__zoom {
+    height: 4rem;
+}
+
+.viewbar__icon {
+    fill: var(--neutral-9);
+    height: 65%;
+    width: 65%;
+    margin: auto;
+}
+
+.viewbar__hr {
+    margin: 0;
+    border: var(--neutral-3) solid 0.5px;
 }
