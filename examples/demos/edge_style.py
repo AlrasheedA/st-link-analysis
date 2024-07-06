@@ -2,7 +2,7 @@ import json
 import streamlit as st
 from st_link_analysis import st_link_analysis, NodeStyle, EdgeStyle
 
-with open("./sample_data.json", "r") as f:
+with open("./data/social.json", "r") as f:
     elements = json.load(f)
 
 PERSON_ATTRS = list(elements["edges"][0]["data"].keys()) + [None]
@@ -69,7 +69,7 @@ with st.expander("Snippet", expanded=False, icon="💻"):
 
         elements = {json.dumps(elements)}
 
-        st_link_analysis(elements, layout, node_styles, edge_styles)
+        st_link_analysis(elements, layout, node_styles, edge_styles, key="xyz")
     """,
         language="python",
     )
