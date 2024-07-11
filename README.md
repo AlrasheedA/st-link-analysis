@@ -7,7 +7,7 @@ A custom Streamlit component for link analysis, built with Cytoscape.js and Stre
 This project provides a Streamlit custom component for visualizing and interacting with graph data using Cytoscape.js. It supports customizable edge and node styles, labels, colors, captions, and icons.
 
 ## Demo
-![extended-example](https://private-user-images.githubusercontent.com/33544979/347968743-91fdbf4b-028a-4d5c-b35c-f42ae24c7da5.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjA3MjY3NzEsIm5iZiI6MTcyMDcyNjQ3MSwicGF0aCI6Ii8zMzU0NDk3OS8zNDc5Njg3NDMtOTFmZGJmNGItMDI4YS00ZDVjLWIzNWMtZjQyYWUyNGM3ZGE1LmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA3MTElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNzExVDE5MzQzMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWQ0YTgxOWFjYjQzNmMxZTkzNzU3OWMzZjljZGNmMzRmN2Y3YmZlZDBiYzNjOWM2NmViMGZiMDI1YTAyNDg5ZDYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.wwBfFZhK4JyTGADf5X1nfbQYARMR2-st7VswzXx7D-A)
+![extended-example](demo.gif)
 
 A demo deployed with Render can be [accessed here](https://st-link-analysis-demo.onrender.com/).
 
