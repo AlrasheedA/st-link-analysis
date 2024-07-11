@@ -2,58 +2,61 @@ import State from "../utils/state";
 import { debounce, getCyInstance } from "../utils/helpers";
 
 // Constants / Configurations
-const FS_ID = "toolbarFullscreen";
-const REFRESH_ID = "toolbarRefresh";
-const EXPORT_ID = "toolbarExport";
-const FS_DEBOUNCE = 100;
-const REFRESH_DEBOUNCE = 200;
-const EXPORT_DEBOUNCE = 250;
+const IDS = {
+    fullscreen: "toolbarFullscreen",
+    refresh: "toolbarRefresh",
+    export: "toolbarExport",
+};
+const DELAYS = {
+    default: 150,
+    fullscreen: 100,
+    refresh: 200,
+    export: 250,
+};
 
 // Event Handlers
-function __handleFsClick() {
-    if (document.fullscreenElement) {
-        document.exitFullscreen();
-    } else {
-        document.getElementById("container").requestFullscreen();
-    }
-}
+const clickHandlers = {
+    fullscreen: debounce(() => {
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        } else {
+            document.getElementById("container").requestFullscreen();
+        }
+    }, DELAYS.fullscreen),
 
-function _handleRefreshClick() {
-    const cy = getCyInstance();
-    cy.layout(State.getState("layout")).run();
-}
+    refresh: debounce(() => {
+        const cy = getCyInstance();
+        cy.layout(State.getState("layout")).run();
+    }, DELAYS.refresh),
 
-function _handleExportClick() {
-    const cy = getCyInstance();
-    let json = cy.elements().not(":hidden").jsons();
-    json = new Blob([JSON.stringify(json, null, 2)], {
-        type: "application/json",
-    });
-    json = URL.createObjectURL(json);
-    const link = document.createElement("a");
-    link.href = json;
-    link.download = "graph.json";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(json);
-}
+    export: debounce(() => {
+        const cy = getCyInstance();
+        let json = cy.elements().not(":hidden").jsons();
+        json = new Blob([JSON.stringify(json, null, 2)], {
+            type: "application/json",
+        });
+        json = URL.createObjectURL(json);
+        const link = document.createElement("a");
+        link.href = json;
+        link.download = "graph.json";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(json);
+    }, DELAYS.export),
+};
 
 // Toolbar initialization
 function initToolbar() {
-    const fs = document.getElementById(FS_ID);
-    const refresh = document.getElementById(REFRESH_ID);
-    const json_export = document.getElementById(EXPORT_ID);
-
-    fs.addEventListener("click", debounce(__handleFsClick, FS_DEBOUNCE));
-    refresh.addEventListener(
-        "click",
-        debounce(_handleRefreshClick, REFRESH_DEBOUNCE)
-    );
-    json_export.addEventListener(
-        "click",
-        debounce(_handleExportClick, EXPORT_DEBOUNCE)
-    );
+    document
+        .getElementById(IDS.fullscreen)
+        .addEventListener("click", clickHandlers.fullscreen);
+    document
+        .getElementById(IDS.refresh)
+        .addEventListener("click", clickHandlers.refresh);
+    document
+        .getElementById(IDS.export)
+        .addEventListener("click", clickHandlers.export);
 }
 
 export default initToolbar;
