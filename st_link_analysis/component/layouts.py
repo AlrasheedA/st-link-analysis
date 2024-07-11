@@ -41,4 +41,10 @@ LAYOUTS = {
         "name": "breadthfirst",
         "directed": True,
     },
+    "fcose": {
+        "name": "fcose",
+    },
+    "cola": {
+        "name": "cola",
+    },
 }

@@ -30,6 +30,8 @@
   },
   "dependencies": {
     "cytoscape": "^3.29.2",
+    "cytoscape-cola": "^2.5.1",
+    "cytoscape-fcose": "^2.2.0",
     "streamlit-component-lib": "^2.0.0"
   },
   "prettier": {

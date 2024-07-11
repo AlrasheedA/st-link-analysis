@@ -1,7 +1,13 @@
 import cytoscape from "cytoscape";
+import fcose from "cytoscape-fcose";
+import cola from "cytoscape-cola";
 import State from "../utils/state";
 import { debounce, getCyInstance } from "../utils/helpers";
 import STYLES from "../utils/styles";
+
+// register cytoscape extensions
+cytoscape.use(fcose);
+cytoscape.use(cola);
 
 // Constants / Configurations
 const CY_ID = "cy";
