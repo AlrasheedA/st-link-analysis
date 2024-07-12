@@ -21,6 +21,9 @@ function _updateLabel(color, label, icon) {
 function _updateProps(data) {
     const props = document.getElementById(PROPS_ID);
     props.innerHTML = Object.entries(data)
+        .filter((item) => {
+            return item[0] != "label";
+        })
         .map(([key, value]) => {
             return `
         <div class='infobar__prop'>
