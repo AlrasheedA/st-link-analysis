@@ -14,7 +14,7 @@ function _updateLabel(color, label, icon) {
     if (icon && icon != "none") {
         label_div.lastChild.style.backgroundImage = `url(${icon})`;
     } else {
-        delete label_div.lastChild.style.backgroundImage;
+        label_div.lastChild.style.backgroundImage = "";
     }
 }
 
