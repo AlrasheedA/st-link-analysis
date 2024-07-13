@@ -4,6 +4,7 @@ from typing import Optional, Union
 
 from st_link_analysis.component.layouts import LAYOUTS
 from st_link_analysis.component.styles import NodeStyle, EdgeStyle
+from st_link_analysis.component.events import Event
 
 _RELEASE = True
 
@@ -28,6 +29,7 @@ def st_link_analysis(
     edge_styles: list[EdgeStyle] = [],
     height: int = 500,
     key: Optional[str] = None,
+    events: list[Event] = [],
 ) -> None:
     """
     Renders a link analysis graph using Cytoscape in Streamlit.
@@ -54,6 +56,11 @@ def st_link_analysis(
         instances of the component to exist in the same Streamlit app without
         conflicts. Setting this parameter is also important to avoid unnecessary
         re-rendering of the component.
+    events: list[Event]
+        For advanced usage only. A list of events to listen to.  When any of these
+        events are triggered, the event information is sent back to the Streamlit
+        app as the component's return value. NOTE: only defined once. Changing the
+        list of events requires remounting the component.
 
     Returns
     -------
@@ -70,6 +77,13 @@ def st_link_analysis(
     if isinstance(layout, str):
         layout = LAYOUTS[layout]
 
+    events = [e.dump() for e in events]
+
     return _component_func(
-        elements=elements, style=style, layout=layout, height=height, key=key
+        elements=elements,
+        style=style,
+        layout=layout,
+        height=height,
+        key=key,
+        events=events,
     )
