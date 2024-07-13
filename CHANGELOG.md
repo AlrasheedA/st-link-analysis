@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Changed
+
+-   Remove redundant "label" from infobar props. The label is already displayed at the top of the infobar.
+
+### Fixed
+
+-   Prevent last selected node's icon from showing when selecting an edge.
+
 ## [0.1.0] - 2024-07-11
 
 ### Added
@@ -23,4 +31,4 @@ All notable changes to this project will be documented in this file.
 
 ### Removed
 
--   Example in the module the directory
+-   Examples in the module's directory
