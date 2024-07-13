@@ -1,5 +1,9 @@
 # st-link-analysis
 
+[![Static Badge](https://img.shields.io/badge/GitHub-%20?&logo=github&color=grey)](https://github.com/AlrasheedA/st-link-analysis)
+[![Static Badge](https://img.shields.io/badge/PyPI-%20?&logo=pypi&color=grey&logoColor=white)](https://pypi.org/project/st-link-analysis/)
+[![Static Badge](https://img.shields.io/badge/Streamlit-%20?&logo=streamlit&color=grey&logoColor=white)](https://discuss.streamlit.io/t/new-component-interactive-graph-visualization-component-for-streamlit/73030)
+
 A custom Streamlit component for link analysis, built with Cytoscape.js and Streamlit.
 
 ## Overview
@@ -7,22 +11,22 @@ A custom Streamlit component for link analysis, built with Cytoscape.js and Stre
 This project provides a Streamlit custom component for visualizing and interacting with graph data using Cytoscape.js. It supports customizable edge and node styles, labels, colors, captions, and icons.
 
 ## Demo
+
 ![extended-example](demo.gif)
 
 A demo deployed with Render can be [accessed here](https://st-link-analysis-demo.onrender.com/).
 
 ## Features
 
-- **Customizable Node and Edge Styles**: Easily define the appearance of nodes and edges using a variety of style options.
-- **Material Icons Support**: Supports a subset of Material icons for styling nodes which can be passed by name (e.g., `icon='person'`). Arbitrary icons can still be used by passing a url (`icon='url(...)'`).
-- **Customizable Layouts**: Choose from different layout algorithms to arrange the graph elements. Currently only Cytoscape JS base layouts are supported.
-- **Interactive Features:**
-  - Fullscreen button.
-  - JSON export button.
-  - Layout refresh button.
-  - Highlights neighboring nodes or edges when an element is selected.
-  - View all properties of the selected elements in a sidebar.
-
+-   **Customizable Node and Edge Styles**: Easily define the appearance of nodes and edges using a variety of style options.
+-   **Material Icons Support**: Supports a subset of Material icons for styling nodes which can be passed by name (e.g., `icon='person'`). Arbitrary icons can still be used by passing a url (`icon='url(...)'`).
+-   **Customizable Layouts**: Choose from different layout algorithms to arrange the graph elements. Currently only Cytoscape JS base layouts are supported.
+-   **Interactive Features:**
+    -   Fullscreen button.
+    -   JSON export button.
+    -   Layout refresh button.
+    -   Highlights neighboring nodes or edges when an element is selected.
+    -   View all properties of the selected elements in a sidebar.
 
 ## Installation
 
@@ -84,23 +88,23 @@ st_link_analysis(elements, "cose", node_styles, edge_styles)
 | ------------------ | --------------------------------------------------------------------------------------------------------------- |
 | `NodeStyle`        | Defines styles for nodes, including labels, colors, captions, and icons. Refer to docstring.                    |
 | `EdgeStyle`        | Defines styles for edges, including curve styles, labels, colors, and directionality. Refer to docstring.       |
+| `Event`            | Define an event to pass to component constructor and listen to. Use sparingly Refer to docstring.               |
 | `st_link_analysis` | Main component for creating and displaying the graph, including layout and height settings. Refer to docstring. |
-
 
 ## Development
 
-- Ensure you have Python 3.9+, Node.js, and npm installed.
-- Clone this repository
-- Navigate to root directory
+-   Ensure you have Python 3.9+, Node.js, and npm installed.
+-   Clone this repository
+-   Navigate to root directory
 
 ### Python Setup
 
 Create and activate a virtual environment, then install the package in editable mode:
 
 ```bash
-python3 -m venv .venv 
+python3 -m venv .venv
 source .venv/bin/activate # On Windows use `.venv\Scripts\activate`
-pip install -e . 
+pip install -e .
 ```
 
 ### Node Setup
@@ -109,18 +113,22 @@ Navigate to the frontend directory and install the necessary npm packages:
 
 ```bash
 cd st_link_analysis/frontend
-npm install 
+npm install
 ```
+
 ### Running the App
 
-Change `RELEASE` flag in `st_link_analysis/component/component.py` to `False`. 
+Change `RELEASE` flag in `st_link_analysis/component/component.py` to `False`.
 
 In one terminal start the frontend dev server
+
 ```bash
 cd st_link_analysis/frontend
-npm run start 
+npm run start
 ```
-In another terminal run the streamlit server 
+
+In another terminal run the streamlit server
+
 ```bash
 cd examples
 streamlit run app.py
@@ -129,6 +137,7 @@ streamlit run app.py
 ### Testing
 
 Install the testing requirements and run linting and tests:
+
 ```bash
 pip install tests/requirements.txt
 ruff check
@@ -145,6 +154,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Acknowledgments
 
-- [Cytoscape.js](https://js.cytoscape.org/)
-- [Streamlit](https://www.streamlit.io/)
-- [Material Icons](https://fonts.google.com/icons)
+-   [Cytoscape.js](https://js.cytoscape.org/)
+-   [Streamlit](https://www.streamlit.io/)
+-   [Material Icons](https://fonts.google.com/icons)
