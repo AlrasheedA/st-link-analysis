@@ -1,3 +1,4 @@
+import { Streamlit } from "streamlit-component-lib";
 import cytoscape from "cytoscape";
 import fcose from "cytoscape-fcose";
 import cola from "cytoscape-cola";
@@ -5,14 +6,22 @@ import State from "../utils/state";
 import { debounce, getCyInstance } from "../utils/helpers";
 import STYLES from "../utils/styles";
 
-// register cytoscape extensions
+// Register cytoscape extensions
 cytoscape.use(fcose);
 cytoscape.use(cola);
 
-// Constants / Configurations
+// Constants & configurations
 const CY_ID = "cy";
 const SELECT_DEBOUNCE = 100;
+const SET_VALUE_DEBOUNCE = 200;
 
+// Debounced Streamlit.setComponentValue
+const setComponentValue = debounce(
+    Streamlit.setComponentValue,
+    SET_VALUE_DEBOUNCE
+);
+
+// Event hanlders
 function _handleSelection(e) {
     const selection = { selected: null, lastSelected: null };
     const type = e.type;
@@ -23,12 +32,32 @@ function _handleSelection(e) {
     State.updateState("selection", selection);
 }
 
-function initCyto() {
+// Initailize cytoscape (only runs once)
+function initCyto(listeners) {
     const cy = cytoscape({ container: document.getElementById(CY_ID) });
     cy.on("select unselect", debounce(_handleSelection, SELECT_DEBOUNCE));
+    listeners.forEach((L) => {
+        cy.on(
+            L.event_type,
+            L.selector,
+            (e) => {
+                setComponentValue({
+                    event: {
+                        name: L.name,
+                        type: e.type,
+                        target_id: e.target.id(),
+                        target_group: e.target.group(),
+                        timestamp: e.timeStamp,
+                    },
+                });
+            },
+            Math.max(L.debounce, 100)
+        );
+    });
     return cy;
 }
 
+// Callbacks for state changes
 const graph = {
     updateHighlight: function () {
         const cy = getCyInstance();
