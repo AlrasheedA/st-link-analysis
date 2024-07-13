@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(layout="wide")
 
-# ------------- Home -------------
+# ------------- Docs -------------
 home = st.Page(
     "./docs/readme.py",
     title="README",
@@ -11,6 +11,11 @@ home = st.Page(
 license = st.Page(
     "./docs/license.py",
     title="LICENSE",
+)
+
+changelog = st.Page(
+    "./docs/changelog.py",
+    title="CHANGELOG",
 )
 
 # -------- Examples / Demos --------
@@ -40,7 +45,7 @@ event_listeners = st.Page(
 
 pg = st.navigation(
     {
-        "Documentation": [home, license],
+        "Documentation": [home, changelog, license],
         "Demos": [node_style, edge_style, layout],
         "Advanced Usage": [event_listeners],
     }
