@@ -5,7 +5,7 @@ with open("./../CHANGELOG.md") as f:
     changelog = f.read()
 
 changelog = re.sub(r"(\n##) (.+)", r"\n---\n \1 :blue[\2]", changelog)
+changelog = changelog.replace("##", "####").replace("# Changelog", "")
 
-changelog = changelog.replace("##", "####")
-
-st.markdown(changelog, unsafe_allow_html=True)
+st.markdown("## Changelog")
+st.markdown(changelog, unsafe_allow_html=False)

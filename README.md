@@ -88,7 +88,7 @@ st_link_analysis(elements, "cose", node_styles, edge_styles)
 | ------------------ | --------------------------------------------------------------------------------------------------------------- |
 | `NodeStyle`        | Defines styles for nodes, including labels, colors, captions, and icons. Refer to docstring.                    |
 | `EdgeStyle`        | Defines styles for edges, including curve styles, labels, colors, and directionality. Refer to docstring.       |
-| `Event`            | Define an event to pass to component constructor and listen to. Use sparingly Refer to docstring.               |
+| `Event`            | Define an event to pass to component function and listen to. Use sparingly Refer to docstring.                  |
 | `st_link_analysis` | Main component for creating and displaying the graph, including layout and height settings. Refer to docstring. |
 
 ## Development
