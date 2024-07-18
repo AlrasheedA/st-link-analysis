@@ -17,12 +17,11 @@ def run_streamlit():
             "--server.headless",
             "true",
             "--browser.gatherUsageStats",
-            "false"
+            "false",
         ],
         cwd="./examples",
     )
-    print("hi")
-    time.sleep(3)
+    time.sleep(5)
     try:
         yield 1
     finally:

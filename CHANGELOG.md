@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Added
+
+-   Enable passing a list of events to listen to. When any of these events are triggered,
+    the event information is sent back to the Streamlit app as the component's return
+    value. The list of events can be defined using instances of the `Event` class and
+    then passed to the component's `events` parameter.
+
 ### Changed
 
 -   Remove redundant "label" from infobar props. The label is already displayed at the top of the infobar.
@@ -11,6 +18,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 -   Prevent last selected node's icon from showing when selecting an edge.
+-   Pass default layout paramters to cola and fcose layouts
 
 ## [0.1.0] - 2024-07-11
 

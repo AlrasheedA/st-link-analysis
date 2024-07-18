@@ -42,9 +42,11 @@ LAYOUTS = {
         "directed": True,
     },
     "fcose": {
+        **DEFAULT_ATTRS,
         "name": "fcose",
     },
     "cola": {
+        **DEFAULT_ATTRS,
         "name": "cola",
     },
 }

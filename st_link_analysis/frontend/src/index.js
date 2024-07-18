@@ -36,14 +36,14 @@ function onRender(event) {
     newStyle = JSON.stringify(args["style"]) + theme.base;
     newLayout = JSON.stringify(args["layout"]);
     newHeight = args["height"];
-    // set height first
+    // Set height first
     if (newHeight != height) {
         height = newHeight;
         document.getElementById("container").style.height = height;
     }
-    // initialize cytoscape instance once
+    // Initialize cytoscape instance once
     if (!cy) {
-        cy = initCyto();
+        cy = initCyto(args["events"]);
     }
     // Only update if changes detected
     if (newElements != elements) {
