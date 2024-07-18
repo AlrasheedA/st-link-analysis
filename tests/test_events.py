@@ -30,6 +30,13 @@ def get_return_json(page: Page):
     return json.loads(data)
 
 
+def test_iframe_exists_events(page: Page):
+    page.get_by_role("link", name=PAGE_NAME).click()
+    page.wait_for_load_state("networkidle")
+    frames = page.query_selector_all(FRAME_LOCATOR)
+    assert len(frames) == 1
+
+
 def test_single_click_node_event(page: Page):
     page.get_by_role("link", name=PAGE_NAME).click()
     frame = page.frame_locator(FRAME_LOCATOR).first.locator(":root")
