@@ -5,17 +5,22 @@ st.set_page_config(layout="wide")
 # ------------- Docs -------------
 home = st.Page(
     "./docs/readme.py",
-    title="README",
+    title="Readme",
     default=True,
 )
 license = st.Page(
     "./docs/license.py",
-    title="LICENSE",
+    title="License",
 )
 
 changelog = st.Page(
     "./docs/changelog.py",
-    title="CHANGELOG",
+    title="Changelog",
+)
+
+icons = st.Page(
+    "./docs/supported_icons.py",
+    title="Supported Icons",
 )
 
 # -------- Examples / Demos --------
@@ -45,7 +50,7 @@ event_listeners = st.Page(
 
 pg = st.navigation(
     {
-        "Documentation": [home, changelog, license],
+        "Documentation": [home, changelog, license, icons],
         "Demos": [node_style, edge_style, layout],
         "Advanced Usage": [event_listeners],
     }
