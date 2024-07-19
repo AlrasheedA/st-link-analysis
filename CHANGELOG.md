@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
     the event information is sent back to the Streamlit app as the component's return
     value. The list of events can be defined using instances of the `Event` class and
     then passed to the component's `events` parameter.
+-   Preview of the list of supported icons in the demo.
 
 ### Changed
 
