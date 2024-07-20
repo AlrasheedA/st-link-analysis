@@ -1,3 +1,5 @@
+import { Streamlit } from "streamlit-component-lib";
+
 function debounce(func, wait) {
     let timeout;
     return function (...args) {
@@ -15,4 +17,12 @@ function getCyInstance() {
     return cy;
 }
 
-export { debounce, getCyInstance };
+function setStreamlitValue({ action, data, timestamp } = {}) {
+    Streamlit.setComponentValue({
+        action: action,
+        data: data,
+        timestamp: timestamp,
+    });
+}
+
+export { debounce, getCyInstance, setStreamlitValue };
