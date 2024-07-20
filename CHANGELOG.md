@@ -11,6 +11,8 @@ All notable changes to this project will be documented in this file.
     value. The list of events can be defined using instances of the `Event` class and
     then passed to the component's `events` parameter.
 -   Preview of the list of supported icons in the demo.
+-   Optional (using `extended_toolbar` paramter) remove/expand toolbar buttons that will
+    send action type and selected elements to Streamlit app as the componenet's return value.
 
 ### Changed
 
