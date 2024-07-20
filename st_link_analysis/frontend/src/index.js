@@ -18,10 +18,6 @@ State.subscribe("selection", graph.updateHighlight);
 State.subscribe("layout", graph.updateLayout);
 State.subscribe("style", graph.updateStyle);
 
-// Initialize components
-initToolbar();
-initViewbar();
-
 // Initialize variables for onRender
 let cy;
 let elements, newElements;
@@ -44,6 +40,8 @@ function onRender(event) {
     // Initialize cytoscape instance once
     if (!cy) {
         cy = initCyto(args["events"]);
+        initToolbar(args["extended_toolbar"]);
+        initViewbar();
     }
     // Only update if changes detected
     if (newElements != elements) {

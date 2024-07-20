@@ -1,4 +1,3 @@
-import { Streamlit } from "streamlit-component-lib";
 import cytoscape from "cytoscape";
 import fcose from "cytoscape-fcose";
 import cola from "cytoscape-cola";

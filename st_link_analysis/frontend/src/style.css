@@ -30,7 +30,7 @@ body[data-theme="dark"] {
 }
 
 html {
-    font-size: clamp(8px, 3px + 1vw, 14px);
+    font-size: clamp(8px, 4px + 1vw, 14px);
 }
 
 body {
@@ -63,10 +63,11 @@ body {
     z-index: 2;
     box-sizing: border-box;
     position: absolute;
-    top: 0rem;
-    bottom: 0rem;
+    top: 0;
+    left: 0;
+    bottom: 0;
     margin: 0.5rem;
-    width: 0rem;
+    width: 0;
     transition-duration: 200ms;
     /* content */
     display: flex;
@@ -91,7 +92,7 @@ body {
 .infobar__help {
     position: absolute;
     bottom: calc(50% - 5rem);
-    left: 0rem;
+    left: 0;
     height: auto;
     transform: rotate(-90deg);
     transform-origin: left top;
@@ -159,10 +160,9 @@ body {
 /* ---------------------------------------------------- */
 .toolbar {
     z-index: 2;
-    box-sizing: border-box;
     position: absolute;
-    top: 0rem;
-    right: 0rem;
+    top: 0;
+    right: 0;
     margin: 0.5rem;
     height: 2rem;
     width: auto;
@@ -176,6 +176,7 @@ body {
 .toolbar__item {
     width: 2rem;
     height: 2rem;
+    cursor: pointer;
     /* content */
     vertical-align: middle;
     display: flex;
@@ -191,14 +192,14 @@ body {
 }
 
 .toolbar__hr {
-    margin: 0.25rem 0 0.25rem 0;
-    border: var(--neutral-8) solid 0.5px;
+    margin: 0;
+    border: var(--neutral-3) solid 0.5px;
 }
 
 .toolbar__icon {
     fill: var(--neutral-9);
-    height: 65%;
-    width: 65%;
+    height: 60%;
+    width: 60%;
     margin: auto;
 }
 
@@ -225,6 +226,7 @@ body {
     display: flex;
     vertical-align: middle;
     align-items: center;
+    cursor: pointer;
     &:hover {
         background-color: var(--neutral-3);
     }

@@ -1,11 +1,13 @@
 import State from "../utils/state";
-import { debounce, getCyInstance } from "../utils/helpers";
+import { debounce, getCyInstance, setStreamlitValue } from "../utils/helpers";
 
 // Constants / Configurations
 const IDS = {
     fullscreen: "toolbarFullscreen",
     refresh: "toolbarRefresh",
     export: "toolbarExport",
+    expand: "toolbarExpand",
+    remove: "toolbarRemove",
 };
 const DELAYS = {
     default: 150,
@@ -13,6 +15,20 @@ const DELAYS = {
     refresh: 200,
     export: 250,
 };
+
+// Helper
+function prepareSelectionData(selection) {
+    const nodes = selection.filter("node").map((e) => {
+        return e.id();
+    });
+    const edges = selection.filter("edge").map((e) => {
+        return e.id();
+    });
+    return {
+        nodes: nodes,
+        edges: edges,
+    };
+}
 
 // Event Handlers
 const clickHandlers = {
@@ -44,10 +60,29 @@ const clickHandlers = {
         document.body.removeChild(link);
         URL.revokeObjectURL(json);
     }, DELAYS.export),
+
+    expand: debounce(() => {
+        const selection = State.getState("selection").selected;
+        setStreamlitValue({
+            action: "toolbar_expand",
+            data: prepareSelectionData(selection),
+            timestamp: Date.now(),
+        });
+        console.log(State.getState("selection").selected);
+    }, DELAYS.default),
+
+    remove: debounce(() => {
+        const selection = State.getState("selection").selected;
+        setStreamlitValue({
+            action: "toolbar_remove",
+            data: prepareSelectionData(selection),
+            timestamp: Date.now(),
+        });
+    }, DELAYS.default),
 };
 
 // Toolbar initialization
-function initToolbar() {
+function initToolbar(extendedToolbar) {
     document
         .getElementById(IDS.fullscreen)
         .addEventListener("click", clickHandlers.fullscreen);
@@ -57,6 +92,23 @@ function initToolbar() {
     document
         .getElementById(IDS.export)
         .addEventListener("click", clickHandlers.export);
+
+    if (extendedToolbar) {
+        document.getElementById(IDS.export).nextSibling.remove();
+        document
+            .getElementById(IDS.expand)
+            .addEventListener("click", clickHandlers.expand);
+        document
+            .getElementById(IDS.remove)
+            .addEventListener("click", clickHandlers.remove);
+    } else {
+        let el = document.getElementById(IDS.expand);
+        for (let i = 0; i < 3; i++) {
+            let sib = el.nextSibling;
+            el.remove();
+            el = sib;
+        }
+    }
 }
 
 export default initToolbar;
