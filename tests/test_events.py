@@ -26,7 +26,12 @@ def get_edge_pos(_id, iframe):
 
 
 def get_return_json(page: Page):
-    data = page.get_by_test_id("stJson").text_content().replace('""', '","')
+    data = (
+        page.get_by_test_id("stJson")
+        .text_content()
+        .replace('""', '","')
+        .replace('}"', '},"')
+    )
     return json.loads(data)
 
 
@@ -46,9 +51,9 @@ def test_single_click_node_event(page: Page):
     frame.click(position=pos)
     page.wait_for_timeout(300)
     data = get_return_json(page)
-    assert data["event"]["target_id"] == NODE_ID
-    assert data["event"]["target_group"] == "nodes"
-    assert data["event"]["name"] == "clicked_node"
+    assert data["data"]["target_id"] == NODE_ID
+    assert data["data"]["target_group"] == "nodes"
+    assert data["action"] == "clicked_node"
 
 
 def test_double_click_edge_event(page: Page):
@@ -60,9 +65,9 @@ def test_double_click_edge_event(page: Page):
     frame.dblclick(position=pos)
     page.wait_for_timeout(300)
     data = get_return_json(page)
-    assert data["event"]["target_id"] == EDGE_ID
-    assert data["event"]["target_group"] == "edges"
-    assert data["event"]["name"] == "another_name"
+    assert data["data"]["target_id"] == EDGE_ID
+    assert data["data"]["target_group"] == "edges"
+    assert data["action"] == "another_name"
 
 
 def test_single_click_edge_no_event(page: Page):
