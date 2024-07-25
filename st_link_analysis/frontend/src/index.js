@@ -27,7 +27,6 @@ let cy;
 let elements, newElements;
 let style, newStyle;
 let layout, newLayout;
-let height, newHeight;
 
 // Streamlit render event handler
 function onRender(event) {
@@ -35,21 +34,21 @@ function onRender(event) {
     newElements = JSON.stringify(args["elements"]);
     newStyle = JSON.stringify(args["style"]) + theme.base;
     newLayout = JSON.stringify(args["layout"]);
-    newHeight = args["height"];
-    // Set height first
-    if (newHeight != height) {
-        height = newHeight;
-        document.getElementById("container").style.height = height;
-    }
-    // Initialize cytoscape instance once
+
+    // Initialize once
     if (!cy) {
         cy = initCyto(args["events"]);
+        document.getElementById("container").style.height = args["height"];
+        cy.json({ elements: args["elements"] });
+        elements = newElements;
     }
-    // Only update if changes detected
+    // Elements dynamic update
     if (newElements != elements) {
         elements = newElements;
         cy.json({ elements: args["elements"] });
     }
+
+    // Style dynamic update
     if (newStyle != style) {
         style = newStyle;
         State.updateState("style", {
@@ -57,6 +56,8 @@ function onRender(event) {
             theme: theme.base,
         });
     }
+
+    // Layout dynamic update
     if (newLayout != layout) {
         layout = newLayout;
         State.updateState("layout", args["layout"]);
