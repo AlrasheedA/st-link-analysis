@@ -36,6 +36,8 @@ html {
 body {
     margin: 0px;
     font-family: "Cairo", sans-serif;
+    --default-margin: 0.5rem;
+    --transition-duration: 200ms;
 }
 
 .container {
@@ -43,6 +45,44 @@ body {
     position: relative;
     background-color: var(--neutral-1);
     border: var(--neutral-3) dashed;
+}
+
+/* ---------------------------------------------------- */
+/* ---------------------- UTILITY ---------------------- */
+/* ---------------------------------------------------- */
+.bar {
+    z-index: 2;
+    position: absolute;
+    margin: var(--default-margin);
+    transition-duration: var(--transition-duration);
+    display: flex;
+    background-color: var(--neutral-2);
+    box-shadow: var(--box-shadow);
+}
+
+.bar__item {
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+        background-color: var(--neutral-3);
+    }
+    &:active {
+        background-color: var(--neutral-2);
+    }
+}
+
+.bar__icon {
+    fill: var(--neutral-9);
+    height: 60%;
+    width: 60%;
+    margin: auto;
+}
+
+.bar__hr {
+    margin: 0;
+    border: var(--neutral-3) solid 0.5px;
 }
 
 /* ---------------------------------------------------- */
@@ -64,9 +104,9 @@ body {
     position: absolute;
     top: 0rem;
     bottom: 0rem;
-    margin: 0.5rem;
+    margin: var(--default-margin);
     width: 0rem;
-    transition-duration: 200ms;
+    transition-duration: var(--transition-duration);
     /* content */
     display: flex;
     flex-direction: column;
@@ -154,144 +194,44 @@ body {
 }
 
 /* ---------------------------------------------------- */
-/* ----------------- Node Actions --------------------- */
+/* -------------------- Layout ------------------------ */
 /* ---------------------------------------------------- */
-.nodeActions {
-    z-index: 2;
-    position: absolute;
+#nodeActions {
     left: 2.5rem; /*2.0 + 0.0 + 0.5*/
     top: 0rem;
-    margin: 0.5rem;
     width: 2rem;
-    transition-duration: 200ms;
-    /* content */
-    display: flex;
     flex-direction: column;
-    /* theme */
-    background-color: var(--neutral-2);
-    box-shadow: var(--box-shadow);
-}
 
-.nodeActions[data-expanded="true"] {
-    left: 18rem; /*2.0 + 17.5 + 0.5*/
-}
-
-.nodeActions__item {
-    height: 2.5rem;
-    display: flex;
-    vertical-align: middle;
-    align-items: center;
-    &:hover {
-        background-color: var(--neutral-3);
+    &[data-expanded="true"] {
+        left: 18rem; /*2.0 + 17.5 + 0.5*/
     }
-    &:active {
-        background-color: var(--neutral-2);
+
+    & .bar__item {
+        height: 2.5rem;
     }
 }
 
-.nodeActions__icon {
-    fill: var(--neutral-9);
-    height: 65%;
-    width: 65%;
-    margin: auto;
-}
-
-.nodeActions__hr {
-    margin: 0;
-    border: var(--neutral-3) solid 0.5px;
-}
-
-/* ---------------------------------------------------- */
-/* --------------------- Toolbar ---------------------- */
-/* ---------------------------------------------------- */
-.toolbar {
-    z-index: 2;
-    box-sizing: border-box;
-    position: absolute;
+#toolbar {
     top: 0rem;
     right: 0rem;
-    margin: 0.5rem;
     height: 2rem;
-    width: auto;
-    /* content */
-    display: flex;
-    /* theme */
-    box-shadow: var(--box-shadow);
-    background-color: var(--neutral-2);
-}
 
-.toolbar__item {
-    width: 2rem;
-    height: 2rem;
-    /* content */
-    vertical-align: middle;
-    display: flex;
-    align-items: center;
-    /* theme */
-    background-color: var(--neutral-2);
-    &:hover {
-        background-color: var(--neutral-3);
-    }
-    &:active {
-        background-color: var(--neutral-2);
+    & .bar__item {
+        width: 2.5rem;
     }
 }
 
-.toolbar__hr {
-    margin: 0.25rem 0 0.25rem 0;
-    border: var(--neutral-8) solid 0.5px;
-}
-
-.toolbar__icon {
-    fill: var(--neutral-9);
-    height: 65%;
-    width: 65%;
-    margin: auto;
-}
-
-/* ---------------------------------------------------- */
-/* --------------------- Viewbar ---------------------- */
-/* ---------------------------------------------------- */
-.viewbar {
-    z-index: 2;
-    position: absolute;
+#viewbar {
     bottom: 0rem;
     right: 0rem;
-    margin: 0.5rem;
     width: 2rem;
-    /* content */
-    display: flex;
     flex-direction: column;
-    /* theme */
-    background-color: var(--neutral-2);
-    box-shadow: var(--box-shadow);
-}
 
-.viewbar__item {
-    height: 2.5rem;
-    display: flex;
-    vertical-align: middle;
-    align-items: center;
-    &:hover {
-        background-color: var(--neutral-3);
+    & .bar__item {
+        height: 2.5rem;
     }
-    &:active {
-        background-color: var(--neutral-2);
+
+    & .viewbar__zoom {
+        height: 4rem;
     }
-}
-
-.viewbar__zoom {
-    height: 4rem;
-}
-
-.viewbar__icon {
-    fill: var(--neutral-9);
-    height: 65%;
-    width: 65%;
-    margin: auto;
-}
-
-.viewbar__hr {
-    margin: 0;
-    border: var(--neutral-3) solid 0.5px;
 }
