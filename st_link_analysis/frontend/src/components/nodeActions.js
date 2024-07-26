@@ -68,7 +68,6 @@ function initNodeActions(enableNodeActions) {
 
     // focus for keydown events
     document.body.setAttribute("tabindex", "0");
-    document.body.focus();
 }
 
 export default initNodeActions;
