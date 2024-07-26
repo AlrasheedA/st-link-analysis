@@ -5,6 +5,7 @@ import { debounce } from "./utils/helpers.js";
 import initCyto, { graph } from "./components/graph.js";
 import initToolbar from "./components/toolbar.js";
 import initViewbar from "./components/viewbar.js";
+import initNodeActions from "./components/nodeActions.js";
 import updateInfobar from "./components/infobar.js";
 
 // Constants / Configurations
@@ -18,10 +19,6 @@ State.subscribe("selection", graph.updateHighlight);
 State.subscribe("layout", graph.updateLayout);
 State.subscribe("style", graph.updateStyle);
 
-// Initialize components
-initToolbar();
-initViewbar();
-
 // Initialize variables for onRender
 let cy;
 let elements, newElements;
@@ -34,13 +31,17 @@ function onRender(event) {
     newElements = JSON.stringify(args["elements"]);
     newStyle = JSON.stringify(args["style"]) + theme.base;
     newLayout = JSON.stringify(args["layout"]);
+    document.getElementById("container").style.height = args["height"];
 
     // Initialize once
     if (!cy) {
-        cy = initCyto(args["events"]);
         document.getElementById("container").style.height = args["height"];
+        cy = initCyto(args["events"]);
         cy.json({ elements: args["elements"] });
         elements = newElements;
+        initNodeActions(args["enableNodeActions"]);
+        initToolbar();
+        initViewbar();
     }
     // Elements dynamic update
     if (newElements != elements) {
