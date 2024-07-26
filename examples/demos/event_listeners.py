@@ -11,6 +11,12 @@ else:
     st.session_state.counter = 1
 
 st.markdown("# Events Listeners")
+st.error(
+    """
+    With node actions feature added, the use case for this feature is no longer clear and may be removed in the future. If you have a use case for it please share via [Github](https://github.com/AlrasheedA/st-link-analysis). 
+    """,
+    icon="🚨",
+)
 st.markdown(
     """
     A list of events to listen to.  When any of these events are triggered,

@@ -45,6 +45,11 @@ event_listeners = st.Page(
     title="Events Listeners",
 )
 
+node_actions = st.Page(
+    "./demos/node_actions.py",
+    title="Node Actions",
+)
+
 #TODO: Further Styling
 #TODO: Customized Layouts
 
@@ -52,7 +57,7 @@ pg = st.navigation(
     {
         "Documentation": [home, changelog, license, icons],
         "Demos": [node_style, edge_style, layout],
-        "Advanced Usage": [event_listeners],
+        "Advanced Usage": [event_listeners, node_actions],
     }
 )
 pg.run()
