@@ -56,9 +56,8 @@ body {
 }
 
 /* ---------------------------------------------------- */
-/* -------------- Information Side Bar ---------------- */
+/* --------------- Information Panel ------------------ */
 /* ---------------------------------------------------- */
-
 .infobar {
     z-index: 2;
     box-sizing: border-box;
@@ -77,7 +76,7 @@ body {
     background-color: var(--neutral-2);
 }
 
-.infobar[data-selected="element"] {
+.infobar[data-expanded="true"] {
     width: 17.5rem;
 
     & .infobar__props {
@@ -152,6 +151,54 @@ body {
     line-height: 1.5rem;
     color: var(--neutral-9);
     font-weight: 600;
+}
+
+/* ---------------------------------------------------- */
+/* ----------------- Node Actions --------------------- */
+/* ---------------------------------------------------- */
+.nodeActions {
+    z-index: 2;
+    position: absolute;
+    left: 2.5rem; /*2.0 + 0.0 + 0.5*/
+    top: 0rem;
+    margin: 0.5rem;
+    width: 2rem;
+    transition-duration: 200ms;
+    /* content */
+    display: flex;
+    flex-direction: column;
+    /* theme */
+    background-color: var(--neutral-2);
+    box-shadow: var(--box-shadow);
+}
+
+.nodeActions[data-expanded="true"] {
+    left: 18rem; /*2.0 + 17.5 + 0.5*/
+}
+
+.nodeActions__item {
+    height: 2.5rem;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    &:hover {
+        background-color: var(--neutral-3);
+    }
+    &:active {
+        background-color: var(--neutral-2);
+    }
+}
+
+.nodeActions__icon {
+    fill: var(--neutral-9);
+    height: 65%;
+    width: 65%;
+    margin: auto;
+}
+
+.nodeActions__hr {
+    margin: 0;
+    border: var(--neutral-3) solid 0.5px;
 }
 
 /* ---------------------------------------------------- */

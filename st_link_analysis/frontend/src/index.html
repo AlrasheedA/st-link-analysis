@@ -8,10 +8,13 @@
     <body data-theme="light">
         <!-- Component Container -->
         <div id="container" class="container fh">
-            <!-- Cytoscape Container -->
+            <!------------------------------------->
+            <!--------- Cytoscape Container ------->
+            <!------------------------------------->
             <div id="cy" class="cy"></div>
-
-            <!-- Information Bar -->
+            <!------------------------------------->
+            <!--------- Information Panel --------->
+            <!------------------------------------->
             <div id="infobar" , class="infobar">
                 <div class="infobar__help">No selected elements</div>
                 <div id="infobarLabel" class="infobar__label">
@@ -20,8 +23,31 @@
                 </div>
                 <div id="infobarProps" class="infobar__props"></div>
             </div>
-
-            <!-- Toolbar -->
+            <!------------------------------------->
+            <!------------- Node Actions ---------->
+            <!------------------------------------->
+            <div id="nodeActions" class="nodeActions">
+                <div
+                    id="nodeActionsRemove"
+                    class="nodeActions__item"
+                    title="Remove Nodes"
+                >
+                    <!-- prettier-ignore -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="nodeActions__icon" viewBox="0 -960 960 960"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                </div>
+                <hr class="nodeActions__hr" />
+                <div
+                    id="nodeActionsExpand"
+                    class="nodeActions__item"
+                    title="Expand Node"
+                >
+                    <!-- prettier-ignore -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="nodeActions__icon" viewBox="0 -960 960 960"><path d="M480-80 310-250l57-57 73 73v-166h80v165l72-73 58 58L480-80ZM250-310 80-480l169-169 57 57-72 72h166v80H235l73 72-58 58Zm460 0-57-57 73-73H560v-80h165l-73-72 58-58 170 170-170 170ZM440-560v-166l-73 73-57-57 170-170 170 170-57 57-73-73v166h-80Z"/></svg>
+                </div>
+            </div>
+            <!------------------------------------->
+            <!-------------- Toolbar -------------->
+            <!------------------------------------->
             <div id="toolbar" class="toolbar">
                 <div
                     id="toolbarRefresh"
@@ -50,7 +76,9 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="toolbar__icon" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
                 </div>
             </div>
-            <!-- Veiw Bar -->
+            <!------------------------------------->
+            <!-------------- Viewbar -------------->
+            <!------------------------------------->
             <div id="viewbar" class="viewbar">
                 <div
                     id="viewbarPlus"

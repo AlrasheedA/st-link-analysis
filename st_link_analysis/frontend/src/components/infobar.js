@@ -4,6 +4,7 @@ import State from "../utils/state";
 const INFOBAR_ID = "infobar";
 const LABEL_ID = "infobarLabel";
 const PROPS_ID = "infobarProps";
+const NODEACTIONS_ID = "nodeActions";
 
 // Infobar children updates
 function _updateLabel(color, label, icon) {
@@ -37,22 +38,24 @@ function _updateProps(data) {
 // Infobar update
 function updateInfobar() {
     const infobar = document.getElementById(INFOBAR_ID);
+    const nodeActions = document.getElementById(NODEACTIONS_ID);
     const el = State.getState("selection").lastSelected;
-    let color, data, label, selected, icon;
+    let color, data, label, expanded, icon;
     if (el) {
         color = el.style().backgroundColor;
         data = el.data();
         label = data["label"] || el.group().slice(0, -1).toUpperCase();
-        selected = "element";
+        expanded = true;
         icon = el.style()["background-image"];
     } else {
         color = "hsla(0, 0%, 0%, 0)";
         data = {};
         label = "";
-        selected = null;
+        expanded = false;
         icon = null;
     }
-    infobar.setAttribute("data-selected", selected);
+    infobar.setAttribute("data-expanded", expanded);
+    nodeActions.setAttribute("data-expanded", expanded);
     _updateLabel(color, label, icon);
     _updateProps(data);
 }
