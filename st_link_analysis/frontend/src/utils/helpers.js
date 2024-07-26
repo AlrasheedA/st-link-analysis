@@ -25,4 +25,6 @@ function setStreamlitValue({ action, data, timestamp } = {}) {
     });
 }
 
-export { debounce, getCyInstance, setStreamlitValue };
+const debouncedSetValue = debounce(setStreamlitValue, 150);
+
+export { debounce, getCyInstance, debouncedSetValue };
