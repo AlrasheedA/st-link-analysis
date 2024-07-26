@@ -14,7 +14,8 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
--   Remove redundant "label" from infobar props. The label is already displayed at the top of the infobar.
+-   Remove redundant "label" from infopanel props. The label is already displayed at the top of the infopanel.
+-   Rename `infobar` to `infopanel`
 
 ### Fixed
 

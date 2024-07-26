@@ -6,7 +6,7 @@ import initCyto, { graph } from "./components/graph.js";
 import initToolbar from "./components/toolbar.js";
 import initViewbar from "./components/viewbar.js";
 import initNodeActions from "./components/nodeActions.js";
-import updateInfobar from "./components/infobar.js";
+import updateInfopanel from "./components/infopanel.js";
 
 // Constants / Configurations
 const CONTAINER_ID = "container";
@@ -14,7 +14,7 @@ const RENDER_DEBOUNCE = 100;
 const SETFRAME_DELAY = 150;
 
 // Subscribe to state changes
-State.subscribe("selection", updateInfobar);
+State.subscribe("selection", updateInfopanel);
 State.subscribe("selection", graph.updateHighlight);
 State.subscribe("layout", graph.updateLayout);
 State.subscribe("style", graph.updateStyle);

@@ -58,7 +58,7 @@ body {
 /* ---------------------------------------------------- */
 /* --------------- Information Panel ------------------ */
 /* ---------------------------------------------------- */
-.infobar {
+.infopanel {
     z-index: 2;
     box-sizing: border-box;
     position: absolute;
@@ -76,18 +76,18 @@ body {
     background-color: var(--neutral-2);
 }
 
-.infobar[data-expanded="true"] {
+.infopanel[data-expanded="true"] {
     width: 17.5rem;
 
-    & .infobar__props {
+    & .infopanel__props {
         border: var(--neutral-3) solid;
     }
-    & .infobar__help {
+    & .infopanel__help {
         display: none;
     }
 }
 
-.infobar__help {
+.infopanel__help {
     position: absolute;
     bottom: calc(50% - 5rem);
     left: 0rem;
@@ -97,13 +97,13 @@ body {
     white-space: nowrap;
 }
 
-.infobar__label {
+.infopanel__label {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.infobar__name {
+.infopanel__name {
     text-align: center;
     align-content: center;
     border-radius: 0.5rem;
@@ -117,7 +117,7 @@ body {
     font-weight: 600;
 }
 
-.infobar__icon {
+.infopanel__icon {
     width: 2rem;
     height: 2rem;
     border-radius: 1.3rem;
@@ -129,7 +129,7 @@ body {
     background-size: 65%;
 }
 
-.infobar__props {
+.infopanel__props {
     padding: 1rem;
     margin-top: 1rem;
     /* content */
@@ -140,13 +140,13 @@ body {
     overflow: auto;
 }
 
-.infobar__key {
+.infopanel__key {
     margin: 0;
     line-height: 1.5rem;
     color: var(--neutral-8);
 }
 
-.infobar__val {
+.infopanel__val {
     margin: 0;
     line-height: 1.5rem;
     color: var(--neutral-9);
