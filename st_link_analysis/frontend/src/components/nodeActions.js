@@ -2,6 +2,10 @@ import State from "../utils/state";
 import { getCyInstance, debouncedSetValue, debounce } from "../utils/helpers";
 
 // Configs
+const IDS = {
+    remove: "nodeActionsRemove",
+    expand: "nodeActionsExpand",
+};
 const DELAYS = {
     default: 150,
 };
@@ -43,14 +47,22 @@ function initNodeActions(enableNodeActions) {
     if (enableNodeActions === false) {
         return;
     }
-    // 'REMOVE' event listeners
+
+    // 'REMOVE' triggers
     document.addEventListener("keydown", (e) => {
         if (["Delete", "Backspace"].includes(e.key)) {
             nodeActionsHandlers.remove();
         }
     });
-    // 'EXPAND' event listeners
+    document
+        .getElementById(IDS.remove)
+        .addEventListener("click", nodeActionsHandlers.remove);
+
+    // 'EXPAND' triggers
     getCyInstance().on("dblclick dbltap", "node", nodeActionsHandlers.expand);
+    document
+        .getElementById(IDS.expand)
+        .addEventListener("click", nodeActionsHandlers.expand);
 
     // focus for keydown events
     document.body.setAttribute("tabindex", "0");
