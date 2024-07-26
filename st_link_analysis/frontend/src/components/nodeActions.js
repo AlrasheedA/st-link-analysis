@@ -45,6 +45,8 @@ const nodeActionsHandlers = {
 
 function initNodeActions(enableNodeActions) {
     if (enableNodeActions === false) {
+        const nodeActions = document.getElementById("nodeActions");
+        nodeActions.style.display = "none";
         return;
     }
 
