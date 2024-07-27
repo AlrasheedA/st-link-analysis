@@ -30,6 +30,7 @@ All notable changes to this project will be documented in this file.
 
 -   Prevent last selected node's icon from showing when selecting an edge.
 -   Pass default layout paramters to cola and fcose layouts
+-   Disable infopanel from expanding when selecting multiple elements
 
 ## [0.1.0] - 2024-07-11
 
