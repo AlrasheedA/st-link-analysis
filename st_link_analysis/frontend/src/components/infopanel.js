@@ -39,14 +39,14 @@ function _updateProps(data) {
 function updateInfopanel() {
     const infopanel = document.getElementById(INFOPANEL_ID);
     const nodeActions = document.getElementById(NODEACTIONS_ID);
-    const el = State.getState("selection").lastSelected;
+    const { selected: eles } = State.getState("selection");
     let color, data, label, expanded, icon;
-    if (el) {
-        color = el.style().backgroundColor;
-        data = el.data();
-        label = data["label"] || el.group().slice(0, -1).toUpperCase();
+    if (eles?.length === 1) {
+        color = eles.first().style().backgroundColor;
+        data = eles.first().data();
+        label = data["label"] || eles.group().slice(0, -1).toUpperCase();
         expanded = true;
-        icon = el.style()["background-image"];
+        icon = eles.style()["background-image"];
     } else {
         color = "hsla(0, 0%, 0%, 0)";
         data = {};
