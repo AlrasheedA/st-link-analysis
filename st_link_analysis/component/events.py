@@ -2,6 +2,7 @@
 For more details refer to https://js.cytoscape.org/#events
 """
 
+RESERVED_NAMES = ["remove", "expand"]
 
 class Event:
     def __init__(
@@ -33,6 +34,8 @@ class Event:
         self.name = name
         self.event_type = event_type
         self.selector = selector
+        if name in RESERVED_NAMES:
+            raise ValueError(f"{RESERVED_NAMES} are reserved action names")
 
     def dump(self) -> dict:
         return {

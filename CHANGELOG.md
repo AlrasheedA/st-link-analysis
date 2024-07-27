@@ -11,10 +11,20 @@ All notable changes to this project will be documented in this file.
     value. The list of events can be defined using instances of the `Event` class and
     then passed to the component's `events` parameter.
 -   Preview of the list of supported icons in the demo.
+-   Enable node removal and expansion by passing `True` to the `enable_node_actions`
+    parameter. Removal is triggered by delete keydown or remove button click. Expansion
+    is triggered by node double click or expand button click. When any of these events
+    are triggered the event is sent back along with selected node IDs to the Streamlit
+    app as the component's return value.
 
 ### Changed
 
--   Remove redundant "label" from infobar props. The label is already displayed at the top of the infobar.
+-   Remove redundant "label" from infopanel props. The label is already displayed at
+    the top of the infopanel.
+-   Rename `infobar` to `infopanel`
+-   Refactor reusable css styles.
+-   `height` now can only be initialized once. Changing values requires remounting
+    the component.
 
 ### Fixed
 

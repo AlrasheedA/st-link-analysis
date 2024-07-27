@@ -1,6 +1,6 @@
 import os
 import streamlit.components.v1 as components
-from typing import Optional, Union
+from typing import Optional, Union, Callable
 
 from st_link_analysis.component.layouts import LAYOUTS
 from st_link_analysis.component.styles import NodeStyle, EdgeStyle
@@ -29,7 +29,10 @@ def st_link_analysis(
     edge_styles: list[EdgeStyle] = [],
     height: int = 500,
     key: Optional[str] = None,
+    on_change: Optional[Callable[..., None]] = None,
+    enable_node_actions: bool = False,
     events: list[Event] = [],
+
 ) -> None:
     """
     Renders a link analysis graph using Cytoscape in Streamlit.
@@ -50,12 +53,21 @@ def st_link_analysis(
     edge_styles : list[EdgeStyle], optional
         A list of custom EdgeStyle instances to apply styles to edge groups in the graph
     height: int, default 500
-        Component's height in pixels.
+        Component's height in pixels. NOTE: only defined once. Changing the value
+        requires remounting the component.
     key : str, optional
         A unique key for the component. If provided, this key allows multiple
         instances of the component to exist in the same Streamlit app without
         conflicts. Setting this parameter is also important to avoid unnecessary
         re-rendering of the component.
+    enable_node_actions: bool, default False
+        For advanced usage only. Enable node removal and expansion. Removal is triggered
+        by delete keydown or remove button click. Expansion is triggered by node double
+        click or expand button click. When any of these events are triggered the event
+        is sent back along with selected node IDs to the Streamlit app as the
+        component's return value. NOTE: only defined once. Changing the value requires
+        remounting the component. CAUTION: keeping an edge with missing source or target
+        IDs will lead to an error.
     events: list[Event]
         For advanced usage only. A list of events to listen to.  When any of these
         events are triggered, the event information is sent back to the Streamlit
@@ -85,5 +97,7 @@ def st_link_analysis(
         layout=layout,
         height=height,
         key=key,
+        on_change=on_change,
+        enableNodeActions=enable_node_actions,
         events=events,
     )

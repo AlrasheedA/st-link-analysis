@@ -5,7 +5,8 @@ import { debounce } from "./utils/helpers.js";
 import initCyto, { graph } from "./components/graph.js";
 import initToolbar from "./components/toolbar.js";
 import initViewbar from "./components/viewbar.js";
-import updateInfobar from "./components/infobar.js";
+import initNodeActions from "./components/nodeActions.js";
+import updateInfopanel from "./components/infopanel.js";
 
 // Constants / Configurations
 const CONTAINER_ID = "container";
@@ -13,21 +14,16 @@ const RENDER_DEBOUNCE = 100;
 const SETFRAME_DELAY = 150;
 
 // Subscribe to state changes
-State.subscribe("selection", updateInfobar);
+State.subscribe("selection", updateInfopanel);
 State.subscribe("selection", graph.updateHighlight);
 State.subscribe("layout", graph.updateLayout);
 State.subscribe("style", graph.updateStyle);
-
-// Initialize components
-initToolbar();
-initViewbar();
 
 // Initialize variables for onRender
 let cy;
 let elements, newElements;
 let style, newStyle;
 let layout, newLayout;
-let height, newHeight;
 
 // Streamlit render event handler
 function onRender(event) {
@@ -35,21 +31,25 @@ function onRender(event) {
     newElements = JSON.stringify(args["elements"]);
     newStyle = JSON.stringify(args["style"]) + theme.base;
     newLayout = JSON.stringify(args["layout"]);
-    newHeight = args["height"];
-    // Set height first
-    if (newHeight != height) {
-        height = newHeight;
-        document.getElementById("container").style.height = height;
-    }
-    // Initialize cytoscape instance once
+    document.getElementById("container").style.height = args["height"];
+
+    // Initialize once
     if (!cy) {
+        document.getElementById("container").style.height = args["height"];
         cy = initCyto(args["events"]);
+        cy.json({ elements: args["elements"] });
+        elements = newElements;
+        initNodeActions(args["enableNodeActions"]);
+        initToolbar();
+        initViewbar();
     }
-    // Only update if changes detected
+    // Elements dynamic update
     if (newElements != elements) {
         elements = newElements;
         cy.json({ elements: args["elements"] });
     }
+
+    // Style dynamic update
     if (newStyle != style) {
         style = newStyle;
         State.updateState("style", {
@@ -57,6 +57,8 @@ function onRender(event) {
             theme: theme.base,
         });
     }
+
+    // Layout dynamic update
     if (newLayout != layout) {
         layout = newLayout;
         State.updateState("layout", args["layout"]);

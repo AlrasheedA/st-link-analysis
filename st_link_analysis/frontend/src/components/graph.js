@@ -1,9 +1,8 @@
-import { Streamlit } from "streamlit-component-lib";
 import cytoscape from "cytoscape";
 import fcose from "cytoscape-fcose";
 import cola from "cytoscape-cola";
 import State from "../utils/state";
-import { debounce, getCyInstance } from "../utils/helpers";
+import { debounce, getCyInstance, debouncedSetValue } from "../utils/helpers";
 import STYLES from "../utils/styles";
 
 // Register cytoscape extensions
@@ -13,13 +12,6 @@ cytoscape.use(cola);
 // Constants & configurations
 const CY_ID = "cy";
 const SELECT_DEBOUNCE = 100;
-const SET_VALUE_DEBOUNCE = 200;
-
-// Debounced Streamlit.setComponentValue
-const setComponentValue = debounce(
-    Streamlit.setComponentValue,
-    SET_VALUE_DEBOUNCE
-);
 
 // Event hanlders
 function _handleSelection(e) {
@@ -30,6 +22,7 @@ function _handleSelection(e) {
     }
     selection.selected = e.cy.$(":selected");
     State.updateState("selection", selection);
+    document.body.focus();
 }
 
 // Initailize cytoscape (only runs once)
@@ -41,14 +34,14 @@ function initCyto(listeners) {
             L.event_type,
             L.selector,
             (e) => {
-                setComponentValue({
-                    event: {
-                        name: L.name,
+                debouncedSetValue({
+                    action: L.name,
+                    data: {
                         type: e.type,
                         target_id: e.target.id(),
                         target_group: e.target.group(),
-                        timestamp: e.timeStamp,
                     },
+                    timestamp: Date.now(),
                 });
             },
             Math.max(L.debounce, 100)
