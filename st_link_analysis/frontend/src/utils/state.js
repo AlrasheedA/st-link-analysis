@@ -13,11 +13,13 @@ class StateManager {
                 custom_style: [],
             },
             layout: null,
+            lastExpanded: false,
         };
         this.observers = {
             selection: [],
             style: [],
             layout: [],
+            lastExpanded: [],
         };
         StateManager.instance = this;
         return this;

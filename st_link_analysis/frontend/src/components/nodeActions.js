@@ -9,6 +9,33 @@ const IDS = {
 const DELAYS = {
     default: 150,
 };
+const expandLayout = {
+    name: "fcose",
+    animationDuration: 500,
+    randomize: false,
+    fit: false,
+    nodeDimensionsIncludeLabels: true,
+    uniformNodeDimensions: true,
+    numIter: 50,
+    tile: false,
+};
+
+function animateNeighbors(parent, neighbors) {
+    const pos = parent.position();
+    const layout = {
+        ...expandLayout,
+        fixedNodeConstraint: [
+            {
+                nodeId: parent.id(),
+                position: pos,
+            },
+        ],
+    };
+    neighbors.position(pos);
+    neighbors.addClass("highlight");
+    parent.connectedEdges().addClass("highlight");
+    getCyInstance().layout(layout).run();
+}
 
 function _handleRemove() {
     const nodes = State.getState("selection").selected?.filter("node");
@@ -24,6 +51,7 @@ function _handleRemove() {
             timestamp: Date.now(),
         });
         nodes.unselect();
+        State.updateState("lastExpanded", false);
     }
 }
 
@@ -35,6 +63,7 @@ function _handleExpand() {
             data: { node_ids: [node.id()] },
             timestamp: Date.now(),
         });
+        State.updateState("lastExpanded", node);
     }
 }
 
@@ -70,4 +99,5 @@ function initNodeActions(enableNodeActions) {
     document.body.setAttribute("tabindex", "0");
 }
 
+export { animateNeighbors };
 export default initNodeActions;

@@ -71,38 +71,14 @@ with st.container(border=True):
     st.markdown("#### Returned Value")
     st.json(vals or {}, expanded=True)
 
-with st.expander("Snippet", expanded=False, icon="💻"):
-    st.code(
-        f"""
-        import streamlit as st
-        from st_link_analysis import st_link_analysis, NodeStyle, EdgeStyle, Event
-        
-        node_styles = [
-            NodeStyle("PERSON", "#FF7F3E", "email", "person"),
-            NodeStyle("POST", "#2A629A", "created_at", "description"),
-        ]
+@st.cache_data
+def get_source():
+    with open(__file__, "r") as f:
+        source = f.read()
+    return source
 
-        edge_styles = [
-            EdgeStyle("FOLLOWS", labeled=True, directed=True),
-            EdgeStyle("POSTED", labeled=True, directed=True),
-            EdgeStyle("QUOTES", labeled=True, directed=True),
-        ]
 
-        layout = "fcose"
+source = get_source()
+with st.expander("Source", expanded=False, icon="💻"):
+    st.code(source, language="python")
 
-        elements = {json.dumps(elements)}
-
-        events = [
-            Event("clicked_node", "click tap", "node"),
-            Event("another_name", "dblclick dbltap", "*"),
-        ]
-
-        with st.container(border=True):
-            vals = st_link_analysis(
-                elements, layout, node_styles, edge_styles, events=events, key="xyz"
-            )
-            st.markdown("#### Returned Value")
-            st.json(vals or {{}}, expanded=True)
-    """,
-        language="python",
-    )
