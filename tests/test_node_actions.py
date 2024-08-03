@@ -42,7 +42,7 @@ def test_expand_dblclick(page: Page):
 
     pos = get_node_pos(NODE_ID, frame)
     frame.dblclick(position=pos)
-    page.wait_for_timeout(500)
+    page.wait_for_timeout(750)
     data = get_return_json(page)
     assert data["action"] == "expand"
     assert data["data"]["node_ids"][0] == NODE_ID
@@ -55,9 +55,9 @@ def test_expand_button(page: Page):
 
     pos = get_node_pos(NODE_ID, frame)
     frame.click(position=pos)
-    page.wait_for_timeout(200)
+    page.wait_for_timeout(250)
     frame.get_by_title("Expand Node").click()
-    page.wait_for_timeout(500)
+    page.wait_for_timeout(750)
     data = get_return_json(page)
     assert data["action"] == "expand"
     assert data["data"]["node_ids"][0] == NODE_ID
@@ -70,9 +70,9 @@ def test_remove_keydown(page: Page):
 
     pos = get_node_pos(NODE_ID, frame)
     frame.click(position=pos)
-    page.wait_for_timeout(200)
+    page.wait_for_timeout(250)
     page.keyboard.down("Delete")
-    page.wait_for_timeout(500)
+    page.wait_for_timeout(750)
     data = get_return_json(page)
     assert data["action"] == "remove"
     assert data["data"]["node_ids"][0] == NODE_ID
@@ -85,9 +85,9 @@ def test_remove_button(page: Page):
 
     pos = get_node_pos(NODE_ID, frame)
     frame.click(position=pos)
-    page.wait_for_timeout(200)
+    page.wait_for_timeout(250)
     frame.get_by_title("Remove Nodes").click()
-    page.wait_for_timeout(500)
+    page.wait_for_timeout(750)
     data = get_return_json(page)
     assert data["action"] == "remove"
     assert data["data"]["node_ids"][0] == NODE_ID
