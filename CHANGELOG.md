@@ -4,18 +4,23 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## [0.2.0] - 2024-08-03
+
 ### Added
 
 -   Enable passing a list of events to listen to. When any of these events are triggered,
     the event information is sent back to the Streamlit app as the component's return
     value. The list of events can be defined using instances of the `Event` class and
     then passed to the component's `events` parameter.
+    ([#14](https://github.com/AlrasheedA/st-link-analysis/pull/14))
 -   Preview of the list of supported icons in the demo.
+    ([#15](https://github.com/AlrasheedA/st-link-analysis/pull/15)).
 -   Enable node removal and expansion by passing `True` to the `enable_node_actions`
     parameter. Removal is triggered by delete keydown or remove button click. Expansion
     is triggered by node double click or expand button click. When any of these events
     are triggered the event is sent back along with selected node IDs to the Streamlit
-    app as the component's return value.
+    app as the component's return value
+    ([#21](https://github.com/AlrasheedA/st-link-analysis/pull/21)).
 
 ### Changed
 
