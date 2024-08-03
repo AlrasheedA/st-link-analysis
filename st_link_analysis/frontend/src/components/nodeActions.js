@@ -15,7 +15,7 @@ const expandLayout = {
     randomize: false,
     fit: false,
     nodeDimensionsIncludeLabels: true,
-    uniformNodeDimensions: false,
+    uniformNodeDimensions: true,
     numIter: 50,
     tile: false,
 };
