@@ -6,12 +6,6 @@ from st_link_analysis.component.layouts import LAYOUTS
 LAYOUT_NAMES = list(LAYOUTS.keys())
 
 st.markdown("# Expand / Remove Nodes")
-st.error(
-    """
-    **Alpha Release**: the feature is still under development. Mainly exploring how to make node expansions smooth. If you have any suggestions please share via [Github](https://github.com/AlrasheedA/st-link-analysis).
-    """,
-    icon="🚨",
-)
 st.markdown(
     """
     The `enable_node_actions` parameter allows for interactive expansion and removal of
