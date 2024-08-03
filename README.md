@@ -10,9 +10,9 @@ A custom Streamlit component for link analysis, built with Cytoscape.js and Stre
 
 This project provides a Streamlit custom component for visualizing and interacting with graph data using Cytoscape.js. It supports customizable edge and node styles, labels, colors, captions, and icons.
 
-## Demo
+![screenshot](https://private-user-images.githubusercontent.com/33544979/354835973-aae995d9-e752-4a96-a69a-2b38db56e0f7.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjI3MDkzMTgsIm5iZiI6MTcyMjcwOTAxOCwicGF0aCI6Ii8zMzU0NDk3OS8zNTQ4MzU5NzMtYWFlOTk1ZDktZTc1Mi00YTk2LWE2OWEtMmIzOGRiNTZlMGY3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA4MDMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwODAzVDE4MTY1OFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWEwODM0NGJlMTViMzVhMDg3NDQ0MzkyYzIwODg2Mjc2Yjg1ZDZmNjJiY2YyYTc1MGVjNzI4NjVmYjNmOWNiYzEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.B1aXRIbOcusooIadmPPOC7B8GIrclE_QadOgSMPK1A0)
 
-![extended-example](demo.gif)
+## Demo
 
 A demo deployed with Render can be [accessed here](https://st-link-analysis-demo.onrender.com/).
 
@@ -86,10 +86,10 @@ st_link_analysis(elements, "cose", node_styles, edge_styles)
 
 | Element            | Description                                                                                                     |
 | ------------------ | --------------------------------------------------------------------------------------------------------------- |
+| `st_link_analysis` | Main component for creating and displaying the graph, including layout and height settings. Refer to docstring. |
 | `NodeStyle`        | Defines styles for nodes, including labels, colors, captions, and icons. Refer to docstring.                    |
 | `EdgeStyle`        | Defines styles for edges, including curve styles, labels, colors, and directionality. Refer to docstring.       |
 | `Event`            | Define an event to pass to component function and listen to. Use sparingly Refer to docstring.                  |
-| `st_link_analysis` | Main component for creating and displaying the graph, including layout and height settings. Refer to docstring. |
 
 ## Development
 
