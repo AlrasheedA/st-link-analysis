@@ -65,3 +65,7 @@ All notable changes to this project will be documented in this file.
 ### Removed
 
 -   Examples in the module's directory
+
+## [0.0.1] - 2024-06-22
+
+Initial release
