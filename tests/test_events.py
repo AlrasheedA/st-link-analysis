@@ -49,8 +49,9 @@ def test_single_click_node_event(page: Page):
 
     pos = get_node_pos(NODE_ID, frame)
     frame.click(position=pos)
-    page.wait_for_timeout(300)
+    page.get_by_text('"action":"').click() # awaits for action
     data = get_return_json(page)
+
     assert data["data"]["target_id"] == NODE_ID
     assert data["data"]["target_group"] == "nodes"
     assert data["action"] == "clicked_node"
@@ -63,8 +64,9 @@ def test_double_click_edge_event(page: Page):
 
     pos = get_edge_pos(EDGE_ID, frame)
     frame.dblclick(position=pos)
-    page.wait_for_timeout(300)
+    page.get_by_text('"action":"').click() # awaits for action
     data = get_return_json(page)
+
     assert data["data"]["target_id"] == EDGE_ID
     assert data["data"]["target_group"] == "edges"
     assert data["action"] == "another_name"
@@ -77,6 +79,7 @@ def test_single_click_edge_no_event(page: Page):
 
     pos = get_edge_pos(EDGE_ID, frame)
     frame.click(position=pos)
-    page.wait_for_timeout(250)
+    page.wait_for_timeout(500) # await to ensure no event
     data = get_return_json(page)
+
     assert data == {}
