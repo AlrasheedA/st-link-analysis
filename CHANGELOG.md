@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Changed
+
+-   Reduce use of `wait_for_timeout` in tests by replacing it with selectors where
+    appropriate, allowing Playwright to handle waiting automatically.
+
 ## [0.2.0] - 2024-08-03
 
 ### Added
