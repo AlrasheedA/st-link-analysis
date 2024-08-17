@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Changed
+
+-   Reduce use of `wait_for_timeout` in tests by replacing it with selectors where
+    appropriate, allowing Playwright to handle waiting automatically.
+    ([#25](https://github.com/AlrasheedA/st-link-analysis/pull/25))
+-   Add pytest reruns to to avoid manual retrying of CI flaky tests.
+    ([#25](https://github.com/AlrasheedA/st-link-analysis/pull/25))
+
 ## [0.2.0] - 2024-08-03
 
 ### Added

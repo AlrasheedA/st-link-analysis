@@ -1,4 +1,4 @@
-from playwright.sync_api import Page
+from playwright.sync_api import Page, expect
 import json
 import re
 
@@ -8,6 +8,12 @@ NODE_ID = "c"
 ASSIGN_CY = "const cy = document.getElementById('cy')._cyreg.cy;"
 FRAME_LOCATOR = "iframe[title*='st_link_analysis']"
 
+def AWAIT_RETURN_ACTION(page):
+    page.get_by_text('"action":"').click()
+
+def AWAIT_SELECT(frame):
+    infopanel_label = frame.locator('#infopanelLabel')
+    expect(infopanel_label).to_be_visible()
 
 def get_node_pos(_id, iframe):
     pos = iframe.evaluate(f"""() => {{
@@ -16,8 +22,8 @@ def get_node_pos(_id, iframe):
     }}""")
     return pos
 
-
 def get_return_json(page: Page):
+    AWAIT_RETURN_ACTION(page)
     data = (
         page.get_by_test_id("stJson")
         .text_content()
@@ -42,8 +48,10 @@ def test_expand_dblclick(page: Page):
 
     pos = get_node_pos(NODE_ID, frame)
     frame.dblclick(position=pos)
-    page.wait_for_timeout(750)
+    AWAIT_SELECT(frame)
+    page.get_by_text('"action":"').click() # awaits for action
     data = get_return_json(page)
+
     assert data["action"] == "expand"
     assert data["data"]["node_ids"][0] == NODE_ID
 
@@ -55,10 +63,10 @@ def test_expand_button(page: Page):
 
     pos = get_node_pos(NODE_ID, frame)
     frame.click(position=pos)
-    page.wait_for_timeout(250)
+    AWAIT_SELECT(frame)
     frame.get_by_title("Expand Node").click()
-    page.wait_for_timeout(750)
     data = get_return_json(page)
+
     assert data["action"] == "expand"
     assert data["data"]["node_ids"][0] == NODE_ID
 
@@ -70,10 +78,10 @@ def test_remove_keydown(page: Page):
 
     pos = get_node_pos(NODE_ID, frame)
     frame.click(position=pos)
-    page.wait_for_timeout(250)
+    AWAIT_SELECT(frame)
     page.keyboard.down("Delete")
-    page.wait_for_timeout(750)
     data = get_return_json(page)
+
     assert data["action"] == "remove"
     assert data["data"]["node_ids"][0] == NODE_ID
 
@@ -85,9 +93,9 @@ def test_remove_button(page: Page):
 
     pos = get_node_pos(NODE_ID, frame)
     frame.click(position=pos)
-    page.wait_for_timeout(250)
+    AWAIT_SELECT(frame)
     frame.get_by_title("Remove Nodes").click()
-    page.wait_for_timeout(750)
     data = get_return_json(page)
+
     assert data["action"] == "remove"
     assert data["data"]["node_ids"][0] == NODE_ID

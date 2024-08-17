@@ -1,4 +1,4 @@
-from playwright.sync_api import Page
+from playwright.sync_api import Page, expect
 import json
 
 
@@ -8,6 +8,12 @@ EDGE_ID = "e2"
 ASSIGN_CY = "const cy = document.getElementById('cy')._cyreg.cy;"
 FRAME_LOCATOR = "iframe[title*='st_link_analysis']"
 
+def AWAIT_RETURN_ACTION(page):
+    page.get_by_text('"action":"').click()
+
+def AWAIT_SELECT(frame):
+    infopanel_label = frame.locator('#infopanelLabel')
+    expect(infopanel_label).to_be_visible()
 
 def get_node_pos(_id, iframe):
     pos = iframe.evaluate(f"""() => {{
@@ -49,8 +55,9 @@ def test_single_click_node_event(page: Page):
 
     pos = get_node_pos(NODE_ID, frame)
     frame.click(position=pos)
-    page.wait_for_timeout(300)
+    AWAIT_RETURN_ACTION(page)
     data = get_return_json(page)
+
     assert data["data"]["target_id"] == NODE_ID
     assert data["data"]["target_group"] == "nodes"
     assert data["action"] == "clicked_node"
@@ -63,8 +70,9 @@ def test_double_click_edge_event(page: Page):
 
     pos = get_edge_pos(EDGE_ID, frame)
     frame.dblclick(position=pos)
-    page.wait_for_timeout(300)
+    AWAIT_RETURN_ACTION(page)
     data = get_return_json(page)
+
     assert data["data"]["target_id"] == EDGE_ID
     assert data["data"]["target_group"] == "edges"
     assert data["action"] == "another_name"
@@ -77,6 +85,7 @@ def test_single_click_edge_no_event(page: Page):
 
     pos = get_edge_pos(EDGE_ID, frame)
     frame.click(position=pos)
-    page.wait_for_timeout(250)
+    AWAIT_SELECT(frame)
     data = get_return_json(page)
+
     assert data == {}
