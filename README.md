@@ -19,14 +19,14 @@ A demo deployed with Render can be [accessed here](https://st-link-analysis-demo
 ## Features
 
 -   **Customizable Node and Edge Styles**: Easily define the appearance of nodes and edges using a variety of style options.
--   **Material Icons Support**: Supports a subset of Material icons for styling nodes which can be passed by name (e.g., `icon='person'`). Arbitrary icons can still be used by passing a url (`icon='url(...)'`).
--   **Customizable Layouts**: Choose from different layout algorithms to arrange the graph elements. Currently only Cytoscape JS base layouts are supported.
+-   **Material Icons Support**: Supports a subset of Material icons for styling nodes which can be passed by name (e.g., `icon='person'`). Custom icons can still be used by passing a URL (e.g., `icon='url(...)'`).
+-   **Customizable Layouts**: Choose from different layout algorithms to arrange the graph elements.
 -   **Interactive Features:**
-    -   Fullscreen button.
-    -   JSON export button.
-    -   Layout refresh button.
+    -   Toolbar with fullscreen, JSON export, and layout refresh buttons.
+    -   View control bar for zooming, fitting, and centering the view, making it easier to navigate your graphs.
+    -   View all properties of the selected elements in a side panel.
     -   Highlights neighboring nodes or edges when an element is selected.
-    -   View all properties of the selected elements in a sidebar.
+-   **Node Actions (Expand / Remove):** Enable node removal and expansion using the `node_actions` parameter. Removal can be triggered by a delete keydown or a remove button click, while expansion occurs on a double-click or expand button click. When these events are triggered, the event details and selected node IDs are sent back to the Streamlit app as the component’s return value.
 
 ## Installation
 

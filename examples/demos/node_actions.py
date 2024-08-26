@@ -8,8 +8,8 @@ LAYOUT_NAMES = list(LAYOUTS.keys())
 st.markdown("# Expand / Remove Nodes")
 st.markdown(
     """
-    The `enable_node_actions` parameter allows for interactive expansion and removal of
-    nodes in the graph. When enabled, the triggered events are sent back to the Streamlit
+    The `node_actions` parameter allows for interactive expansion and removal of
+    nodes in the graph. When used, the triggered events are sent back to the Streamlit
     app along with the selected node IDs, allowing developers to handle the necessary
     updates to the graph elements.
      - Removal is triggered by delete/backspace keydown or remove button click. 
@@ -34,7 +34,7 @@ st.code(
             node_ids = val["data"]["node_ids"]
             # .. handle remove 
 
-    st_link_analysis(elements, enable_node_actions=True, on_change=my_call_back, key="mygraph") 
+    st_link_analysis(elements, node_actions=['remove', 'expand'], on_change=my_call_back, key="mygraph")
         """,
     language="python",
 )
@@ -123,7 +123,7 @@ with st.container(border=True):
         layout=layout,
         node_styles=node_styles,
         key=COMPONENT_KEY,
-        enable_node_actions=True,
+        node_actions=['remove', 'expand'],
         on_change=onchange_callback,
     )
     st.markdown("#### Returned Value")

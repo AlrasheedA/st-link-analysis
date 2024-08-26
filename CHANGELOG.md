@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Added
+
+-   Added `node_actions` paramter to allow users to list which node actions to
+    enable (e.g. `remove`, `expand`, or both).
+    ([#28](https://github.com/AlrasheedA/st-link-analysis/pull/28))
+
 ### Changed
 
 -   Reduce use of `wait_for_timeout` in tests by replacing it with selectors where
@@ -11,6 +17,14 @@ All notable changes to this project will be documented in this file.
     ([#25](https://github.com/AlrasheedA/st-link-analysis/pull/25))
 -   Add pytest reruns to to avoid manual retrying of CI flaky tests.
     ([#25](https://github.com/AlrasheedA/st-link-analysis/pull/25))
+
+### Deprecated
+
+-   Depreceated the use of `enable_node_actions` paramter. `node_actions` should be
+    used instead to enable node actions. If `enable_node_actions` is set to True
+    and `node_actions` is not provided, default actions ('remove', 'expand')
+    will be enabled.
+    ([#28](https://github.com/AlrasheedA/st-link-analysis/pull/28))
 
 ## [0.2.0] - 2024-08-03
 
