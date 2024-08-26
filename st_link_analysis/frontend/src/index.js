@@ -39,7 +39,7 @@ function onRender(event) {
         cy = initCyto(args["events"]);
         cy.json({ elements: args["elements"] });
         elements = newElements;
-        initNodeActions(args["enableNodeActions"]);
+        initNodeActions(args["nodeActions"]);
         initToolbar();
         initViewbar();
     }
@@ -51,7 +51,7 @@ function onRender(event) {
             // default behavior
             cy.json({ elements: args["elements"] });
         } else {
-            // if nodeActions enabled & last action === expand
+            // if last action === expand
             const newNodes = cy
                 .add([
                     ...args["elements"]["nodes"],
