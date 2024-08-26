@@ -72,31 +72,38 @@ const nodeActionsHandlers = {
     expand: debounce(_handleExpand, DELAYS.default),
 };
 
-function initNodeActions(enableNodeActions) {
-    if (enableNodeActions === false) {
+function initNodeActions(nodeActions) {
+    if (nodeActions.length === 0) {
         const nodeActions = document.getElementById("nodeActions");
         nodeActions.style.display = "none";
         return;
     }
 
-    // 'REMOVE' triggers
-    document.addEventListener("keydown", (e) => {
-        if (["Delete", "Backspace"].includes(e.key)) {
-            nodeActionsHandlers.remove();
-        }
-    });
-    document
-        .getElementById(IDS.remove)
-        .addEventListener("click", nodeActionsHandlers.remove);
+    if (nodeActions.includes("remove")) {
+        const remove = document.getElementById(IDS.remove);
+        remove.addEventListener("click", nodeActionsHandlers.remove);
+        remove.style.display = "flex";
+        // keydown event
+        document.addEventListener("keydown", (e) => {
+            if (["Delete", "Backspace"].includes(e.key)) {
+                nodeActionsHandlers.remove();
+            }
+        });
+        // focus for keydown events
+        document.body.setAttribute("tabindex", "0");
+    }
 
-    // 'EXPAND' triggers
-    getCyInstance().on("dblclick dbltap", "node", nodeActionsHandlers.expand);
-    document
-        .getElementById(IDS.expand)
-        .addEventListener("click", nodeActionsHandlers.expand);
-
-    // focus for keydown events
-    document.body.setAttribute("tabindex", "0");
+    if (nodeActions.includes("expand")) {
+        const expand = document.getElementById(IDS.expand);
+        expand.addEventListener("click", nodeActionsHandlers.expand);
+        expand.style.display = "flex";
+        // dobule click event
+        getCyInstance().on(
+            "dblclick dbltap",
+            "node",
+            nodeActionsHandlers.expand
+        );
+    }
 }
 
 export { animateNeighbors };

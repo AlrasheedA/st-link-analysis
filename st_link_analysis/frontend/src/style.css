@@ -208,6 +208,7 @@ body {
 
     & .bar__item {
         height: 2.5rem;
+        display: none;
     }
 }
 
