@@ -31,7 +31,7 @@ All notable changes to this project will be documented in this file.
 -   Depreceated the use of `labeled` parameter for `EdgeStyle`. `caption` should be
     used instead to specify edge caption/label. If `labeled` is set to True and `caption`
     is not provided, default caption 'label' will be used.
-    ([#30](https://github.com/AlrasheedA/st-link-analysis/pull/30))
+    ([#30](https://github.com/AlrasheedA/st-link-analysis/pull/30)) 
 
 ## [0.2.0] - 2024-08-03
 
