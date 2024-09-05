@@ -101,8 +101,8 @@ node_styles = [
 ]
 
 edge_styles = [
-    EdgeStyle("WORKS_AT", labeled=True, directed=True),
-    EdgeStyle("OWNED_BY", labeled=True, directed=True),
+    EdgeStyle("WORKS_AT", caption='label', directed=True),
+    EdgeStyle("OWNED_BY", caption='label', directed=True),
 ]
 
 

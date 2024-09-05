@@ -5,7 +5,7 @@ from st_link_analysis import st_link_analysis, NodeStyle, EdgeStyle
 with open("./data/social.json", "r") as f:
     elements = json.load(f)
 
-PERSON_ATTRS = list(elements["edges"][0]["data"].keys()) + [None]
+EDGE_ATTRS = ["id", "source", "target", "label", None]
 CURVE_STYLES = [
     "bezier",
     "haystack",
@@ -25,12 +25,13 @@ st.markdown(
     """
 )
 
-cols = st.columns((4, 1, 2, 5))
+c1, c2, c3, c4 = st.columns(4)
 label = "FOLLOWS"
-curve_style = cols[0].selectbox("Curve Style", CURVE_STYLES, index=0)
-color = cols[1].color_picker("Line Color", value="#808080")
-labeled = cols[2].checkbox("Labeled", value=False)
-directed = cols[2].checkbox("Directed", value=False)
+curve_style = c1.selectbox("Curve Style", CURVE_STYLES, index=0)
+caption = c2.selectbox("Caption", EDGE_ATTRS, index=3)
+directed = c3.selectbox("Directed", [True, False], index=0)
+color = c4.color_picker("Line Color", value="#808080")
+
 
 node_styles = [
     NodeStyle("PERSON", "#FF7F3E", "name", "person"),
@@ -38,9 +39,9 @@ node_styles = [
 ]
 
 edge_styles = [
-    EdgeStyle(label, color, labeled, directed, curve_style),
-    EdgeStyle("POSTED", labeled=True, directed=True),
-    EdgeStyle("QUOTES", labeled=True, directed=True),
+    EdgeStyle(label, color, caption, directed=directed, curve_style=curve_style),
+    EdgeStyle("POSTED", caption="label", directed=True),
+    EdgeStyle("QUOTES", caption="label", directed=True),
 ]
 
 layout = {"name": "cose", "animate": "end", "nodeDimensionsIncludeLabels": False}
@@ -55,9 +56,9 @@ with st.expander("Snippet", expanded=False, icon="💻"):
         from st_link_analysis import st_link_analysis, NodeStyle, EdgeStyle
         
         edge_styles = [
-            EdgeStyle({label=}, {color=}, {labeled=}, {directed=}, {curve_style=}),
-            EdgeStyle("POSTED", labeled=True, directed=True),
-            EdgeStyle("QUOTES", labeled=True, directed=True),
+            EdgeStyle({label=}, {color=}, {caption=}, {directed=}, {curve_style=}),
+            EdgeStyle("POSTED", caption='label', directed=True),
+            EdgeStyle("QUOTES", caption='label', directed=True),
         ]
 
         node_styles = [

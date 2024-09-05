@@ -28,9 +28,9 @@ node_styles = [
 ]
 
 edge_styles = [
-    EdgeStyle("FOLLOWS", labeled=True, directed=True),
-    EdgeStyle("POSTED", labeled=True, directed=True),
-    EdgeStyle("QUOTES", labeled=True, directed=True),
+    EdgeStyle("FOLLOWS", caption="label", directed=True),
+    EdgeStyle("POSTED", caption="label", directed=True),
+    EdgeStyle("QUOTES", caption="label", directed=True),
 ]
 
 layout = {"name": "cose", "animate": "end", "nodeDimensionsIncludeLabels": False}
@@ -50,9 +50,9 @@ with st.expander("Snippet", expanded=False, icon="💻"):
         ]
 
         edge_styles = [
-            EdgeStyle("FOLLOWS", labeled=True, directed=True),
-            EdgeStyle("POSTED", labeled=True, directed=True),
-            EdgeStyle("QUOTES", labeled=True, directed=True),
+            EdgeStyle("FOLLOWS", caption='label', directed=True),
+            EdgeStyle("POSTED", caption='label', directed=True),
+            EdgeStyle("QUOTES", caption='label', directed=True),
         ]
 
         layout = {{"name": "cose", "animate": "end", "nodeDimensionsIncludeLabels": False}}

@@ -6,9 +6,12 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
--   Added `node_actions` paramter to allow users to list which node actions to
+-   Added `node_actions` parameter to allow users to list which node actions to
     enable (e.g. `remove`, `expand`, or both).
     ([#28](https://github.com/AlrasheedA/st-link-analysis/pull/28))
+-   Added `caption` parameter for `EdgeStyle` to allow users to specify which edge
+    attribute to use as caption/label.
+    ([#30](https://github.com/AlrasheedA/st-link-analysis/pull/30))
 
 ### Changed
 
@@ -20,11 +23,15 @@ All notable changes to this project will be documented in this file.
 
 ### Deprecated
 
--   Depreceated the use of `enable_node_actions` paramter. `node_actions` should be
+-   Depreceated the use of `enable_node_actions` parameter. `node_actions` should be
     used instead to enable node actions. If `enable_node_actions` is set to True
     and `node_actions` is not provided, default actions ('remove', 'expand')
     will be enabled.
     ([#28](https://github.com/AlrasheedA/st-link-analysis/pull/28))
+-   Depreceated the use of `labeled` parameter for `EdgeStyle`. `caption` should be
+    used instead to specify edge caption/label. If `labeled` is set to True and `caption`
+    is not provided, default caption 'label' will be used.
+    ([#30](https://github.com/AlrasheedA/st-link-analysis/pull/30)) 
 
 ## [0.2.0] - 2024-08-03
 
@@ -56,7 +63,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 -   Prevent last selected node's icon from showing when selecting an edge.
--   Pass default layout paramters to cola and fcose layouts
+-   Pass default layout parameters to cola and fcose layouts
 -   Disable infopanel from expanding when selecting multiple elements
 
 ## [0.1.0] - 2024-07-11
