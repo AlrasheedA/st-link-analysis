@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "st_link_analysis"
-version = "0.2.0"
+version = "0.3.0"
 authors = [{ name = "AlrasheedA" }]
 description = "A streamlit custom component for visualizing and interacting with graphs"
 readme = "README.md"
