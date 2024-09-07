@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## [0.3.0] - 2024-09-07
+
 ### Added
 
 -   Added `node_actions` parameter to allow users to list which node actions to
