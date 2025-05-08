@@ -49,4 +49,8 @@ LAYOUTS = {
         **DEFAULT_ATTRS,
         "name": "cola",
     },
+    "dagre": {
+        **DEFAULT_ATTRS,
+        "name": "dagre",
+    },
 }
