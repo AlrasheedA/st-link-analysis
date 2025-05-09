@@ -39,4 +39,13 @@ SUPPORTED_ICONS = [
     "cloud",
     "folder",
     "monitor",
+    "analytics",
+    "assured_workload",
+    "campaign",
+    "factory",
+    "health_and_safety",
+    "medical_information",
+    "medical_services",
+    "monitoring",
+    "request_quote"
 ]
