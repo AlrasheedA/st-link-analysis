@@ -2,7 +2,6 @@ import warnings
 
 from typing import Optional
 
-
 # TODO: remove if no depreciation warnings
 class LinkAnalysisDeprecationWarning(DeprecationWarning):
     pass
@@ -18,6 +17,7 @@ class NodeStyle:
         color: Optional[str] = None,
         caption: Optional[str] = None,
         icon: Optional[str] = None,
+        shape: Optional[str] = None,
     ) -> None:
         """
         Define a custom style of a node in the graph based on label.
@@ -37,7 +37,9 @@ class NodeStyle:
             Node icon to be passed by the name of Material Icons (e.g. 'person')
             or by url (e.g. url('...')). A list of supported icons is available
             in `st_link_analysis.component.icons`
-
+        shape: Optional[str]
+            The shape of the node. If not provided, the default node shape is a circle.
+            For detailed information, visit https://js.cytoscape.org/#style/node-body
         Example
         -------
         >>> node_style = NodeStyle(label="Person", color="#345eeb", caption="name")
@@ -46,6 +48,7 @@ class NodeStyle:
         self.color = color
         self.caption = caption
         self.icon = icon
+        self.shape = shape
 
     def dump(self) -> dict:
         selector = f"node[label='{self.label}']"
@@ -59,6 +62,8 @@ class NodeStyle:
             if not self.icon.startswith("url"):
                 self.icon = f"./icons/{self.icon.lower()}.svg"
             style["background-image"] = self.icon
+        if self.shape:
+            style["shape"] = self.shape
 
         return {
             "selector": selector,
