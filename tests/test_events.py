@@ -44,6 +44,7 @@ def get_return_json(page: Page):
 def test_iframe_exists_events(page: Page):
     page.get_by_role("link", name=PAGE_NAME).click()
     page.wait_for_load_state("networkidle")
+    page.wait_for_selector(FRAME_LOCATOR, timeout=10000)
     frames = page.query_selector_all(FRAME_LOCATOR)
     assert len(frames) == 1
 
