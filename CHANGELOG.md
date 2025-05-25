@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Added
+
+-   Added support for the **Dagre** layout by including the `cytoscape-dagre` dependency.
+    Thanks to @drachenbach for the PR.  ([#39](https://github.com/AlrasheedA/st-link-analysis/pull/39))
+
 ### Changed
 
 -   Increased the minimum required Python version to **3.9**.
