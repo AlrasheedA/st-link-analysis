@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Changed
+
+-   Increased the minimum required Python version to **3.9**.
+-   Updated frontend dependencies in `package.json` and `package-lock.json`.
+-   Added test-related packages under the `[project.optional-dependencies.dev]`
+    section in `pyproject.toml`.
+-   Updated `README.md` to  installing development dependencies using
+    `pip install -e ".[dev]"` instead of `pip install -r tests/requirements.txt`
+
 ## [0.3.0] - 2024-09-07
 
 ### Added

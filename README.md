@@ -104,7 +104,7 @@ Create and activate a virtual environment, then install the package in editable 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate # On Windows use `.venv\Scripts\activate`
-pip install -e .
+pip install -e ".[dev]"
 ```
 
 ### Node Setup
@@ -136,10 +136,9 @@ streamlit run app.py
 
 ### Testing
 
-Install the testing requirements and run linting and tests:
+Run linting and tests:
 
 ```bash
-pip install tests/requirements.txt
 ruff check
 pytest
 ```
