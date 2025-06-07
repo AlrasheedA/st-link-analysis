@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 
 st.set_page_config(layout="wide")
@@ -31,13 +32,11 @@ node_style = st.Page(
 edge_style = st.Page(
     "./demos/edge_style.py",
     title="Edge Styles",
-)  #TODO: use multi-edge graph example for edge styles
+)  # TODO: use multi-edge graph example for edge styles
 layout = st.Page(
     "./demos/layout.py",
     title="Layout Algorithms",
 )
-
-#TODO: Return Selection
 
 # --------- Advanced Usage ---------
 event_listeners = st.Page(
@@ -50,14 +49,26 @@ node_actions = st.Page(
     title="Node Actions",
 )
 
-#TODO: Further Styling
-#TODO: Customized Layouts
+# TODO: Further Styling
+# TODO: Customized Layouts
 
-pg = st.navigation(
-    {
-        "Documentation": [home, changelog, license, icons],
-        "Demos": [node_style, edge_style, layout],
-        "Advanced Usage": [event_listeners, node_actions],
-    }
-)
+
+# --------- Navigation ---------
+menu = {
+    "Documentation": [home, changelog, license, icons],
+    "Demos": [node_style, edge_style, layout],
+    "Advanced Usage": [event_listeners, node_actions],
+}
+
+# --------- Debugging ---------
+debug_pages = [
+    st.Page(f"./debug/{file}", title=file.replace(".py", ""))
+    for file in os.listdir("./debug")
+    if file.endswith(".py")
+]
+
+if debug_pages:
+    menu["Debugging"] = debug_pages
+
+pg = st.navigation(menu)
 pg.run()
