@@ -56,7 +56,7 @@ class NodeStyle:
         if self.caption:
             style["label"] = f"data({self.caption})"
         if self.icon:
-            if not self.icon.startswith("url"):
+            if not self.icon.startswith("url") and not self.icon.endswith(".svg"):
                 self.icon = f"./icons/{self.icon.lower()}.svg"
             style["background-image"] = self.icon
 

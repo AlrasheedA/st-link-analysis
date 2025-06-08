@@ -6,9 +6,14 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
--   Added support for the **Dagre** layout by including the `cytoscape-dagre` dependency.
+-   Support for the **Dagre** layout by including the `cytoscape-dagre` dependency.
     Thanks to @drachenbach for the PR.  ([#39](https://github.com/AlrasheedA/st-link-analysis/pull/39))
--   Added 9 new Material icons to frontend assets. ([#47](https://github.com/AlrasheedA/st-link-analysis/pull/47))
+-   9 new Material icons to frontend assets. ([#47](https://github.com/AlrasheedA/st-link-analysis/pull/47))
+-   Support for dynamically loading debug pages from the `examples/debug/` directory in demo's `app.py`
+
+### Fixed
+-   Prevent accumulating multiple `.svg` extensions on repeated calls of `dump` 
+    method with the same initialization of `NodeStyle` ([#48](https://github.com/AlrasheedA/st-link-analysis/issues/48))
 
 ### Changed
 
