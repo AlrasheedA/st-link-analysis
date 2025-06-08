@@ -1,38 +1,31 @@
 ---
-name: Bug report
+name: Bug Report
 about: Create a report to help us improve
 title: ''
-labels: ''
-assignees: ''
-
+labels: 'bug'
+assignee: 'AlrasheedA'
 ---
 
-**Describe the bug**
+## Describe the bug
+
 A clear and concise description of what the bug is.
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+## To Reproduce
 
-**Expected behavior**
+Please share the **code and steps** needed to reproduce this behavior.
+
+- Include a **minimal, self-contained working example**
+- Avoid referencing large datasets or unrelated parts of your code.
+
+## Expected Behavior
+
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+## Additional context
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+Include any of the following if relevant:
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
-
-**Additional context**
-Add any other context about the problem here.
+- Error messages or stack traces
+- Screenshots
+- Environment details (OS, Python, package versions, etc.)
+- Any other context that might help diagnose the issue
