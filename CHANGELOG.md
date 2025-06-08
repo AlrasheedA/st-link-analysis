@@ -11,6 +11,9 @@ All notable changes to this project will be documented in this file.
 -   9 new Material icons to frontend assets. ([#47](https://github.com/AlrasheedA/st-link-analysis/pull/47))
 -   Support for dynamically loading debug pages from the `examples/debug/` directory in demo's `app.py`
 
+### Fixed
+-   Prevent accumulating multiple `.svg` extensions on repeated calls of `dump` 
+    method with the same initialization of `NodeStyle` ([#48](https://github.com/AlrasheedA/st-link-analysis/issues/48))
 
 ### Changed
 
