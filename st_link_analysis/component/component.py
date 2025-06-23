@@ -1,7 +1,7 @@
 import os
 import warnings
 import streamlit.components.v1 as components
-from typing import Optional, Union, Callable, Literal
+from typing import Optional, Union, Callable, Literal, Dict, Any, List
 
 from st_link_analysis.component.layouts import LAYOUTS
 from st_link_analysis.component.styles import NodeStyle, EdgeStyle
@@ -33,17 +33,17 @@ else:
 
 
 def st_link_analysis(
-    elements: dict,
-    layout: Union[str, dict] = "cose",
-    node_styles: list[NodeStyle] = [],
-    edge_styles: list[EdgeStyle] = [],
+    elements: Dict[str, Any],
+    layout: Union[str, Dict[str, Any]] = "cose",
+    node_styles: List[NodeStyle] = [],
+    edge_styles: List[EdgeStyle] = [],
     height: int = 500,
     key: Optional[str] = None,
     on_change: Optional[Callable[..., None]] = None,
-    node_actions: list[Literal["remove", "expand"]] = [],
+    node_actions: List[Literal["remove", "expand"]] = [],
     enable_node_actions: Optional[bool] = None,  # deprecated
-    events: list[Event] = [],
-) -> None:
+    events: List[Event] = [],
+) -> Any:
     """
     Renders a link analysis graph using Cytoscape in Streamlit.
 
@@ -88,16 +88,18 @@ def st_link_analysis(
         app as the component's return value. NOTE: only defined once. Changing the
         list of events requires remounting the component.
     """
-    node_styles = [n.dump() for n in node_styles]
-    edge_styles = [e.dump() for e in edge_styles]
-    style = node_styles + edge_styles
+    node_styles_dump = [n.dump() for n in node_styles]
+    edge_styles_dump = [e.dump() for e in edge_styles]
+    style = node_styles_dump + edge_styles_dump
 
-    height = str(height) + "px"
+    height_str = str(height) + "px"
 
     if isinstance(layout, str):
-        layout = LAYOUTS[layout]
+        layout_config = LAYOUTS[layout]
+    else:
+        layout_config = layout
 
-    events = [e.dump() for e in events]
+    events_dump = [e.dump() for e in events]
 
     # TODO: remove in next version along with imports, docs, and signature
     if enable_node_actions is not None:
@@ -112,10 +114,10 @@ def st_link_analysis(
     return _component_func(
         elements=elements,
         style=style,
-        layout=layout,
-        height=height,
+        layout=layout_config,
+        height=height_str,
         key=key,
         on_change=on_change,
         nodeActions=node_actions,
-        events=events,
+        events=events_dump,
     )

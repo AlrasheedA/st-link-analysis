@@ -1,6 +1,5 @@
 import warnings
-
-from typing import Optional
+from typing import Optional, Dict, Any
 
 
 # TODO: remove if no depreciation warnings
@@ -47,7 +46,7 @@ class NodeStyle:
         self.caption = caption
         self.icon = icon
 
-    def dump(self) -> dict:
+    def dump(self) -> Dict[str, Any]:
         selector = f"node[label='{self.label}']"
         style = {}
 
@@ -124,7 +123,7 @@ class EdgeStyle:
         if labeled and not caption:
             self.caption = "label"
 
-    def dump(self) -> dict:
+    def dump(self) -> Dict[str, Any]:
         selector = f"edge[label='{self.label}']"
         style = {}
 

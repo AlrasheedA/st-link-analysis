@@ -1,6 +1,7 @@
 """
 For more details refer to https://js.cytoscape.org/#events
 """
+from typing import Dict
 
 RESERVED_NAMES = ["remove", "expand"]
 
@@ -37,7 +38,7 @@ class Event:
         if name in RESERVED_NAMES:
             raise ValueError(f"{RESERVED_NAMES} are reserved action names")
 
-    def dump(self) -> dict:
+    def dump(self) -> Dict[str, str]:
         return {
             "name": self.name,
             "event_type": self.event_type,
