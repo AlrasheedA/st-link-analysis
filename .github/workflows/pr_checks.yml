@@ -27,6 +27,9 @@ jobs:
       - name: 'Ruff Check'
         run: |
           ruff check --output-format=github
+      - name: 'MyPy Check'
+        run: |
+          mypy st_link_analysis/
 
   lint_js:
     runs-on: ubuntu-latest

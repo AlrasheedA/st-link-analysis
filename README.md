@@ -26,7 +26,7 @@ A demo deployed with Render can be [accessed here](https://st-link-analysis-demo
     -   View control bar for zooming, fitting, and centering the view, making it easier to navigate your graphs.
     -   View all properties of the selected elements in a side panel.
     -   Highlights neighboring nodes or edges when an element is selected.
--   **Node Actions (Expand / Remove):** Enable node removal and expansion using the `node_actions` parameter. Removal can be triggered by a delete keydown or a remove button click, while expansion occurs on a double-click or expand button click. When these events are triggered, the event details and selected node IDs are sent back to the Streamlit app as the component’s return value.
+-   **Node Actions (Expand / Remove):** Enable node removal and expansion using the `node_actions` parameter. Removal can be triggered by a delete keydown or a remove button click, while expansion occurs on a double-click or expand button click. When these events are triggered, the event details and selected node IDs are sent back to the Streamlit app as the component's return value.
 
 ## Installation
 
@@ -136,11 +136,22 @@ streamlit run app.py
 
 ### Testing
 
-Run linting and tests:
+Run linting, type checking, and tests:
 
 ```bash
 ruff check
+mypy st_link_analysis/
 pytest
+```
+
+### Type Checking
+
+This project uses type hints and mypy for static type checking to improve code maintainability and developer experience. The mypy configuration is defined in `pyproject.toml` with strict settings to catch potential type-related issues early.
+
+To run type checking locally:
+
+```bash
+mypy st_link_analysis/
 ```
 
 ## Contributing

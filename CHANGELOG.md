@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
     Thanks to @drachenbach for the PR.  ([#39](https://github.com/AlrasheedA/st-link-analysis/pull/39))
 -   9 new Material icons to frontend assets. ([#47](https://github.com/AlrasheedA/st-link-analysis/pull/47))
 -   Support for dynamically loading debug pages from the `examples/debug/` directory in demo's `app.py`
+-   Added mypy in the development workflow. Updated type hints throughout the codebase.
 
 ### Fixed
 -   Prevent accumulating multiple `.svg` extensions on repeated calls of `dump` 
