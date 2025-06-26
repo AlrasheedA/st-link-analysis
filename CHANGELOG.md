@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## [0.4.0] - 2025-06-26
+
 ### Added
 
 -   Support for the **Dagre** layout by including the `cytoscape-dagre` dependency.
