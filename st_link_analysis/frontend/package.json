@@ -32,6 +32,7 @@
     "cytoscape": "^3.32.0",
     "cytoscape-cola": "^2.5.1",
     "cytoscape-dagre": "^2.5.0",
+    "cytoscape-klay": "^3.1.4",
     "cytoscape-fcose": "^2.2.0",
     "streamlit-component-lib": "^2.0.0"
   },
