@@ -53,4 +53,8 @@ LAYOUTS = {
         **DEFAULT_ATTRS,
         "name": "dagre",
     },
+        "klay": {
+        **DEFAULT_ATTRS,
+        "name": "klay",
+    },
 }

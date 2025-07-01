@@ -2,6 +2,7 @@ import cytoscape from "cytoscape";
 import fcose from "cytoscape-fcose";
 import cola from "cytoscape-cola";
 import dagre from "cytoscape-dagre";
+import klay from "cytoscape-klay";
 import State from "../utils/state";
 import { debounce, getCyInstance, debouncedSetValue } from "../utils/helpers";
 import STYLES from "../utils/styles";
@@ -10,6 +11,7 @@ import STYLES from "../utils/styles";
 cytoscape.use(fcose);
 cytoscape.use(cola);
 cytoscape.use(dagre);
+cytoscape.use(klay);
 
 // Constants & configurations
 const CY_ID = "cy";
