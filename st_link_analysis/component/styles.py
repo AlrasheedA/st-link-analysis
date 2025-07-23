@@ -17,6 +17,7 @@ class NodeStyle:
         color: Optional[str] = None,
         caption: Optional[str] = None,
         icon: Optional[str] = None,
+        custom_styles: Optional[Dict] = None,
     ) -> None:
         """
         Define a custom style of a node in the graph based on label.
@@ -36,6 +37,10 @@ class NodeStyle:
             Node icon to be passed by the name of Material Icons (e.g. 'person')
             or by url (e.g. url('...')). A list of supported icons is available
             in `st_link_analysis.component.icons`
+        custom_styles: Optional[dict]
+            A dictionary of additional styles that will be applied to the edge. This
+            allows for control of any valid styles to be applied to the edge beyond basic
+            options provided by python constructor. For detailed information on styles that can be set, visit: https://js.cytoscape.org/#style
 
         Example
         -------
@@ -45,6 +50,7 @@ class NodeStyle:
         self.color = color
         self.caption = caption
         self.icon = icon
+        self.custom_styles = custom_styles
 
     def dump(self) -> Dict[str, Any]:
         selector = f"node[label='{self.label}']"
@@ -58,6 +64,9 @@ class NodeStyle:
             if not self.icon.startswith("url") and not self.icon.endswith(".svg"):
                 self.icon = f"./icons/{self.icon.lower()}.svg"
             style["background-image"] = self.icon
+        if self.custom_styles:
+            for key, val in self.custom_styles.items():
+                style[key] = val
 
         return {
             "selector": selector,
@@ -69,6 +78,7 @@ class NodeStyle:
         return f"{self.__class__.__name__}({properties})"
 
     def __repr__(self) -> str:
+
         return self.__str__()
 
 
@@ -81,6 +91,7 @@ class EdgeStyle:
         labeled: bool = False,  # deprecated
         directed: bool = False,
         curve_style: Optional[str] = None,
+        custom_styles: Optional[Dict] = None,
     ) -> None:
         """
         Define a custom style of an edge in the graph based on label.
@@ -109,6 +120,10 @@ class EdgeStyle:
             "bezier", which is suitable for multigraphs. For large, simple graphs,
             consider using "haystack" for better performance. For more options
             and detailed information,visit: https://js.cytoscape.org/#style/edge-line
+        custom_styles: Optional[dict]
+            A dictionary of additional styles that will be applied to the edge. This
+            allows for control of any valid styles to be applied to the edge beyond basic
+            options provided by python constructor. For detailed information on styles that can be set, visit: https://js.cytoscape.org/#style
 
         Example
         -------
@@ -119,6 +134,7 @@ class EdgeStyle:
         self.caption = caption
         self.directed = directed
         self.curve_style = curve_style
+        self.custom_styles = custom_styles
 
         # TODO: remove in next version along with imports, docs, and signature
         if labeled is not None:
@@ -145,15 +161,19 @@ class EdgeStyle:
             style["target-arrow-shape"] = "triangle"
         if self.curve_style:
             style["curve-style"] = self.curve_style
+        if self.custom_styles:
+            for key, val in self.custom_styles.items():
+                style[key] = val
 
         return {
             "selector": selector,
             "style": style,
         }
-        
+
     def __str__(self) -> str:
         properties = ', '.join(f"{key}='{value}'" for key, value in vars(self).items())
         return f"{self.__class__.__name__}({properties})"
 
     def __repr__(self) -> str:
+
         return self.__str__()
