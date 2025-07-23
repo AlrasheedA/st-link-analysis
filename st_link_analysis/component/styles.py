@@ -64,6 +64,13 @@ class NodeStyle:
             "style": style,
         }
 
+    def __str__(self) -> str:
+        properties = ', '.join(f"{key}='{value}'" for key, value in vars(self).items())
+        return f"{self.__class__.__name__}({properties})"
+
+    def __repr__(self) -> str:
+        return self.__str__()
+
 
 class EdgeStyle:
     def __init__(
@@ -143,3 +150,10 @@ class EdgeStyle:
             "selector": selector,
             "style": style,
         }
+        
+    def __str__(self) -> str:
+        properties = ', '.join(f"{key}='{value}'" for key, value in vars(self).items())
+        return f"{self.__class__.__name__}({properties})"
+
+    def __repr__(self) -> str:
+        return self.__str__()
