@@ -38,8 +38,8 @@ class NodeStyle:
             or by url (e.g. url('...')). A list of supported icons is available
             in `st_link_analysis.component.icons`
         custom_styles: Optional[dict]
-            A dictionary of additional styles that will be applied to the edge. This
-            allows for control of any valid styles to be applied to the edge beyond basic
+            A dictionary of additional styles that will be applied to the node. This
+            allows for control of any valid styles to be applied to the node beyond basic
             options provided by python constructor. For detailed information on styles that can be set, visit: https://js.cytoscape.org/#style
 
         Example
